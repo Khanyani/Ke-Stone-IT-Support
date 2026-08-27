@@ -97,9 +97,6 @@ ke-stone-it-support/
 | 2026-08-05 | Part 1: Added Harvard-referenced Reference List to the written proposal document. |
 | 2026-08-11 | Part 2: Created sitemap and file/folder structure documentation. |
 | 2026-08-11 | Part 2: Built index.html, about.html, services.html, enquiry.html, and contact.html with shared header/footer navigation. |
-| 2026-08-11 | Part 2: Added shared css/style.css (responsive layout, design tokens matching Part 1 proposal). |
-| 2026-08-11 | Part 2: Added shared js/script.js (mobile nav toggle + enquiry/contact form validation). |
-| 2026-08-11 | Part 2: Tested site across viewport sizes and validated form behaviour. |
 
 ## References
 Baymard Institute (2025) *E-commerce checkout usability research.* Available at:
