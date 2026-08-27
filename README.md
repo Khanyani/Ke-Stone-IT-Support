@@ -42,9 +42,9 @@ file structure, and the working HTML/CSS/JS website).
 |---|---|---|
 | Weeks 1–2 | Research, service/pricing definition, and wireframing | Complete (Part 1) |
 | Weeks 3–4 | Visual design and content writing | Complete (Part 1) |
-| Weeks 5–6 | Development: HTML structure, CSS styling, booking form | Complete (Part 2) |
-| Week 7 | Testing (form validation, mobile responsiveness, cross-browser) | Complete (Part 2) |
-| Week 8 | Launch and GitHub repository handover | In progress (Part 2) |
+| Weeks 5–6 | Development: HTML structure, CSS styling, booking form | In Progress (Part 2) |
+| Week 7 | Testing (form validation, mobile responsiveness, cross-browser) | Planned (Part 2) |
+| Week 8 | Launch and GitHub repository handover | Planned (Part 2) |
 | Part 3 | Further functionality, accessibility, and content refinement | Planned |
 
 ## Part 1 Details
