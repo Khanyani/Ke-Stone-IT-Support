@@ -1,9 +1,10 @@
 # Ke'Stone IT Support — Website Project
 
 ## Student Information
+- **Student Name:** Khanyani Mnwana
 - **Student Number:** ST10489373
 - **Module:** WEDE5020
-- **Assignment:** Portfolio of Evidence (PoE) — Website Project
+- **Assignment:** Portfolio Of Evidence (POE) — Website Project
 
 ## Project Overview
 Ke'Stone IT Support is a newly established small business (founded 2026) providing fast, friendly, and
