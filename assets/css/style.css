@@ -1,0 +1,496 @@
+/* =========================================================
+   Ke'Stone IT Support - Main Stylesheet
+   Written in a simple, beginner-friendly style.
+   ========================================================= */
+
+/* ---------- Basic reset ----------
+   Removes default spacing browsers add so the page looks
+   the same in every browser. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- General page styles ---------- */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #222222;
+  background-color: #ffffff;
+}
+
+h1, h2, h3 {
+  line-height: 1.3;
+  margin-bottom: 15px;
+  color: #10233f;
+}
+
+h1 {
+  font-size: 2.2em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+a {
+  color: #1b5fb0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ---------- Skip link (for accessibility) ----------
+   Hidden until a keyboard user tabs to it. */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: #10233f;
+  color: #ffffff;
+  padding: 10px 15px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ---------- Container ----------
+   Keeps content from stretching too wide and centres it. */
+.container {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container.narrow {
+  max-width: 700px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.site-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  color: #10233f;
+}
+
+.logo-mark {
+  background-color: #1b5fb0;
+  color: #ffffff;
+  font-weight: bold;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* Mobile nav button - hidden on larger screens */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #10233f;
+}
+
+/* Main navigation */
+.primary-nav ul {
+  display: flex;
+  align-items: center;
+}
+
+.primary-nav li {
+  margin-left: 20px;
+}
+
+.primary-nav a {
+  color: #10233f;
+  font-weight: bold;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.btn:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.btn-accent {
+  background-color: #1b5fb0;
+  color: #ffffff;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: #10233f;
+  color: #10233f;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.9em;
+}
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+.hero {
+  background-color: #f4f6f9;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  text-align: left;
+}
+
+.eyebrow {
+  color: #1b5fb0;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  margin-bottom: 10px;
+}
+
+.lead {
+  font-size: 1.1em;
+  max-width: 600px;
+}
+
+.hero-actions {
+  margin-top: 20px;
+}
+
+.hero-actions .btn {
+  margin-right: 15px;
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+.section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.section-grey {
+  background-color: #f4f6f9;
+}
+
+.section-navy {
+  background-color: #10233f;
+  color: #ffffff;
+}
+
+.section-navy h2,
+.section-navy p {
+  color: #ffffff;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
+/* =========================================================
+   GRID LAYOUTS
+   Simple grids made with flexbox and percentage widths. */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.grid-2 > * {
+  width: calc(50% - 13px);
+}
+
+.grid-3 > * {
+  width: calc(33.333% - 17px);
+}
+
+.grid-4 > * {
+  width: calc(25% - 19px);
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 25px;
+}
+
+.card.narrow {
+  max-width: 500px;
+}
+
+.card-icon {
+  background-color: #eaf1fb;
+  color: #1b5fb0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+/* =========================================================
+   STATS (trust section)
+   ========================================================= */
+.stat {
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 2em;
+  color: #1b5fb0;
+  margin-bottom: 5px;
+}
+
+/* =========================================================
+   CALL TO ACTION BAND
+   ========================================================= */
+.cta-band {
+  text-align: center;
+}
+
+.cta-band .btn {
+  margin-top: 15px;
+}
+
+/* =========================================================
+   PRICE (services page)
+   ========================================================= */
+.price {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #1b5fb0;
+  margin-bottom: 10px;
+}
+
+/* =========================================================
+   FORMS (contact / enquiry pages)
+   ========================================================= */
+.form-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.field {
+  width: calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+}
+
+.field-full {
+  width: 100%;
+}
+
+.field label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.field input,
+.field textarea,
+.field select {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1em;
+}
+
+.error-msg {
+  color: #c0392b;
+  font-size: 0.85em;
+  margin-top: 5px;
+  display: block;
+}
+
+.form-note {
+  font-size: 0.9em;
+  color: #555555;
+  margin-top: 15px;
+}
+
+/* Map on the contact page */
+.map-frame {
+  border: 0;
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer {
+  background-color: #10233f;
+  color: #ffffff;
+  padding-top: 50px;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-bottom: 30px;
+}
+
+.footer-grid > div {
+  width: calc(25% - 23px);
+}
+
+.footer-heading {
+  font-size: 1.1em;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.footer-text {
+  color: #cccccc;
+}
+
+.footer-list li {
+  margin-bottom: 10px;
+}
+
+.footer-list a {
+  color: #cccccc;
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #2a3c58;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 0.85em;
+  color: #cccccc;
+}
+
+/* =========================================================
+   RESPONSIVE STYLES (for smaller screens like phones)
+   ========================================================= */
+@media (max-width: 800px) {
+
+  /* Show the hamburger button and stack the nav */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .primary-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .primary-nav li {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  /* Make grid items stack on top of each other */
+  .grid-2 > *,
+  .grid-3 > *,
+  .grid-4 > * {
+    width: 100%;
+  }
+
+  .footer-grid > div {
+    width: 100%;
+  }
+
+  .field {
+    width: 100%;
+  }
+}
+
+/* End of stylesheet */
