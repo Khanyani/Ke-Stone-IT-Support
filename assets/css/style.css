@@ -25,6 +25,10 @@
   --maxw: 1180px;
   --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
   --display: "Space Grotesk", "Segoe UI", Arial, sans-serif;
+  /* aliases kept for compatibility with markup that references the
+     original token names */
+  --font-heading: var(--display);
+  --font-mono: var(--mono);
   --grid-major: rgba(255, 255, 255, 0.055);
   --grid-minor: rgba(255, 255, 255, 0.018);
   --bg-x: 50%;
@@ -117,6 +121,12 @@ p {
   margin: 0 0 1rem;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -148,6 +158,12 @@ iframe:focus-visible {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 22px;
+}
+
+/* compatibility: narrower container variant referenced as
+   class="container narrow" in earlier markup */
+.container.narrow {
+  max-width: 700px;
 }
 
 .skip-link {
@@ -233,6 +249,14 @@ iframe:focus-visible {
   position: sticky;
   top: 0;
   z-index: 40;
+  transition: min-height 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+.site-header.is-stuck {
+  background: rgba(8, 11, 15, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+.site-header.is-stuck .header-inner {
+  min-height: 60px;
 }
 .header-inner {
   display: flex;
@@ -286,6 +310,7 @@ iframe:focus-visible {
   padding: 0;
 }
 .primary-nav a {
+  position: relative;
   color: var(--text-muted);
   font-family: var(--mono);
   font-size: 0.82rem;
@@ -306,13 +331,33 @@ iframe:focus-visible {
 .primary-nav a.btn {
   color: var(--ink);
 }
+/* animated underline + active marker */
+.primary-nav a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 100%;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.primary-nav a:not(.btn):hover::after,
+.primary-nav a:not(.btn)[aria-current="page"]::after {
+  transform: scaleX(1);
+}
 
 .nav-toggle {
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
   background: transparent;
   border: 1px solid var(--line-strong);
   border-radius: 2px;
   padding: 9px 10px;
+  cursor: pointer;
 }
 .nav-toggle-bar {
   display: block;
@@ -322,9 +367,15 @@ iframe:focus-visible {
   margin: 4px 0;
 }
 
+@media (max-width: 860px) {
+  .primary-nav {
+    transition: max-height 0.3s ease, opacity 0.25s ease;
+  }
+}
+
 @media (max-width: 760px) {
   .nav-toggle {
-    display: block;
+    display: flex;
   }
   .primary-nav {
     display: none;
@@ -430,18 +481,40 @@ iframe:focus-visible {
   color: var(--text);
   max-width: 18ch;
 }
-.hero p.lead {
+.hero p.lead,
+.lead {
   font-size: 1.12rem;
   color: var(--text-muted);
   max-width: 58ch;
   border-left: 2px solid var(--lime);
   padding-left: 1.1rem;
 }
+.lead.narrow {
+  margin-left: auto;
+  margin-right: auto;
+}
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
   margin-top: 2rem;
+}
+.hero-actions .btn {
+  margin-right: 0;
+}
+
+/* Hero pointer glow */
+.hero.has-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 30%),
+    rgba(85, 230, 208, 0.12),
+    transparent 70%
+  );
+  transition: opacity 0.4s ease;
 }
 
 /* ---------- 7. Cards & grids ---------- */
@@ -461,6 +534,7 @@ iframe:focus-visible {
 
 .card {
   position: relative;
+  overflow: hidden;
   background: var(--ink-2);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -468,7 +542,11 @@ iframe:focus-visible {
   transition:
     border-color 0.18s ease,
     transform 0.18s ease,
-    background 0.18s ease;
+    background 0.18s ease,
+    box-shadow 0.25s ease;
+}
+.card.narrow {
+  max-width: 500px;
 }
 .card::before {
   /* corner tick marks give each card a schematic feel */
@@ -481,10 +559,27 @@ iframe:focus-visible {
   border-top: 2px solid var(--lime);
   border-left: 2px solid var(--lime);
 }
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    220px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(201, 242, 77, 0.16),
+    transparent 65%
+  );
+}
 .card:hover {
   border-color: var(--line-strong);
   background: var(--ink-3);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+.card:hover::after {
+  opacity: 1;
 }
 .card h3 {
   margin-bottom: 0.45rem;
@@ -530,8 +625,11 @@ iframe:focus-visible {
 
 /* Trust strip */
 .stat {
+  position: relative;
+  overflow: hidden;
   border-left: 1px solid var(--line);
   padding-left: 1.2rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .stat strong {
   display: block;
@@ -548,6 +646,27 @@ iframe:focus-visible {
   text-transform: uppercase;
   margin: 0.35rem 0 0;
 }
+.stat::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    220px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(201, 242, 77, 0.16),
+    transparent 65%
+  );
+}
+.stat:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+.stat:hover::after {
+  opacity: 1;
+}
 
 /* CTA band */
 .cta-band {
@@ -557,6 +676,9 @@ iframe:focus-visible {
   max-width: 58ch;
   margin: 0 auto 1.8rem;
   color: rgba(12, 16, 21, 0.75);
+}
+.cta-band .btn {
+  margin-top: 15px;
 }
 .section-navy .btn-accent {
   background: var(--ink);
@@ -611,9 +733,12 @@ iframe:focus-visible {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
+  outline: none;
   border-color: var(--lime);
 }
-.field .error-msg {
+.field .error-msg,
+.error-msg {
+  display: block;
   color: #ff8f7a;
   font-family: var(--mono);
   font-size: 0.78rem;
@@ -626,10 +751,44 @@ iframe:focus-visible {
   border-color: #ff8f7a;
   background: rgba(255, 143, 122, 0.07);
 }
+.field.is-valid input,
+.field.is-valid select,
+.field.is-valid textarea {
+  border-color: var(--cyan);
+}
 .form-note {
   font-family: var(--mono);
   font-size: 0.78rem;
   color: var(--text-muted);
+}
+
+/* Form progress + counters */
+.form-progress {
+  height: 4px;
+  background: var(--ink-3);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+}
+.form-progress span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--lime), var(--cyan));
+  transition: width 0.3s ease;
+}
+.form-progress-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 0 0 0.4rem;
+}
+.char-count {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
 }
 
 /* ---------- 9. Maps ---------- */
@@ -683,6 +842,10 @@ iframe:focus-visible {
 .footer-list a:hover {
   color: var(--lime);
 }
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
 .footer-bottom {
   border-top: 1px solid var(--line);
   text-align: center;
@@ -730,39 +893,6 @@ iframe:focus-visible {
   transition: width 0.08s linear;
 }
 
-/* Header compacts on scroll */
-.site-header {
-  transition: min-height 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-}
-.site-header.is-stuck {
-  background: rgba(8, 11, 15, 0.95);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-}
-.site-header.is-stuck .header-inner {
-  min-height: 60px;
-}
-
-/* Nav links: animated underline + active marker */
-.primary-nav a:not(.btn) {
-  position: relative;
-}
-.primary-nav a:not(.btn)::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  height: 2px;
-  width: 100%;
-  background: var(--lime);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.primary-nav a:not(.btn):hover::after,
-.primary-nav a:not(.btn)[aria-current="page"]::after {
-  transform: scaleX(1);
-}
-
 /* Scroll reveal */
 [data-reveal] {
   opacity: 0;
@@ -773,55 +903,6 @@ iframe:focus-visible {
 [data-reveal].is-visible {
   opacity: 1;
   transform: none;
-}
-
-/* Cursor spotlight on cards + hero */
-.card,
-.stat {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-.card::after,
-.stat::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  background: radial-gradient(
-    220px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(201, 242, 77, 0.16),
-    transparent 65%
-  );
-}
-.card:hover,
-.stat:hover {
-  transform: translateY(-4px);
-  border-color: var(--line-strong);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
-}
-.card:hover::after,
-.stat:hover::after {
-  opacity: 1;
-}
-
-/* Hero pointer glow */
-.hero.has-glow::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    420px circle at var(--mx, 50%) var(--my, 30%),
-    rgba(85, 230, 208, 0.12),
-    transparent 70%
-  );
-  transition: opacity 0.4s ease;
-}
-.hero {
-  position: relative;
 }
 
 /* Filter / search bar (services page) */
@@ -876,40 +957,6 @@ iframe:focus-visible {
 }
 .is-filtered-out {
   display: none !important;
-}
-
-/* Form progress + counters */
-.form-progress {
-  height: 4px;
-  background: var(--ink-3);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-bottom: 1.2rem;
-}
-.form-progress span {
-  display: block;
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--lime), var(--cyan));
-  transition: width 0.3s ease;
-}
-.form-progress-label {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  margin: 0 0 0.4rem;
-}
-.char-count {
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  margin-top: 0.3rem;
-}
-.field.is-valid input,
-.field.is-valid select,
-.field.is-valid textarea {
-  border-color: var(--cyan);
 }
 
 /* Toasts */
@@ -971,58 +1018,6 @@ iframe:focus-visible {
   bottom: 76px;
 }
 
-/* Mobile nav animation */
-@media (max-width: 860px) {
-  .primary-nav {
-    transition: max-height 0.3s ease, opacity 0.25s ease;
-  }
-}
-
-@media (max-width: 760px) {
-  :root {
-    --grid-major: rgba(255, 255, 255, 0.045);
-    --grid-minor: rgba(255, 255, 255, 0.012);
-  }
-
-  body::before {
-    background-size: 48px 48px, 48px 48px, 12px 12px, 12px 12px, auto;
-  }
-
-  body::after {
-    background:
-      radial-gradient(340px circle at 88% 12%, rgba(201, 242, 77, 0.075), transparent 72%),
-      radial-gradient(400px circle at 0% 66%, rgba(85, 230, 208, 0.04), transparent 74%),
-      linear-gradient(to bottom, transparent 30%, rgba(5, 7, 9, 0.3) 100%);
-  }
-
-  .hero {
-    padding: 4.5rem 0 4rem;
-  }
-
-  .section {
-    padding: 3.75rem 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  body::after {
-    transition: none;
-  }
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .card:hover,
-  .stat:hover {
-    transform: none;
-  }
-}
-
 /* =========================================================
    13. Support plans (pricing)
    ========================================================= */
@@ -1037,10 +1032,6 @@ iframe:focus-visible {
 .pricing-head h2 em {
   font-style: normal;
   color: var(--lime);
-}
-.lead.narrow {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .pricing-switch {
@@ -1201,7 +1192,56 @@ iframe:focus-visible {
   border-color: var(--cyan);
 }
 
+/* =========================================================
+   14. Responsive styles
+   Breakpoints: tablet/mobile combined at 760px (grid/clamp
+   sizing removes the need for a separate tablet step), plus a
+   small-phone refinement at 420px carried over from the
+   earlier draft.
+   ========================================================= */
 @media (max-width: 760px) {
+  :root {
+    --grid-major: rgba(255, 255, 255, 0.045);
+    --grid-minor: rgba(255, 255, 255, 0.012);
+  }
+
+  body::before {
+    background-size: 48px 48px, 48px 48px, 12px 12px, 12px 12px, auto;
+  }
+
+  body::after {
+    background:
+      radial-gradient(340px circle at 88% 12%, rgba(201, 242, 77, 0.075), transparent 72%),
+      radial-gradient(400px circle at 0% 66%, rgba(85, 230, 208, 0.04), transparent 74%),
+      linear-gradient(to bottom, transparent 30%, rgba(5, 7, 9, 0.3) 100%);
+  }
+
+  .hero {
+    padding: 4.5rem 0 4rem;
+  }
+
+  .section {
+    padding: 3.75rem 0;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+  .hero-actions .btn {
+    text-align: center;
+  }
+
+  .stat {
+    border-left: none;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 15px;
+  }
+
+  .map-frame {
+    height: 220px;
+  }
+
   .pricing-switch-track {
     width: 100%;
   }
@@ -1214,3 +1254,50 @@ iframe:focus-visible {
     font-size: 2.1rem;
   }
 }
+
+/* ---------- Small phone (420px and below) ---------- */
+@media (max-width: 420px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  h1 {
+    font-size: 1.6em;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .card,
+  .form-card {
+    padding: 18px;
+  }
+
+  .logo-text em {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body::after {
+    transition: none;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .card:hover,
+  .stat:hover {
+    transform: none;
+  }
+}
+
+/* End of stylesheet */
