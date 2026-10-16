@@ -297,6 +297,7 @@
               <p>
                 Saturday: 09:00 – 13:00 · Sunday &amp; public holidays: closed
               </p>
+              <p class="open-status" data-open-status aria-live="polite"></p>
               <!-- Business opening hours -->
 
             </article>
@@ -381,6 +382,24 @@
 
 
       <!-- ================= CONTACT FORM ================= -->
+
+      <!-- ================= INTERACTIVE MAP (Leaflet + OpenStreetMap) ================= -->
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Service area</p>
+            <h2>Where we work</h2>
+            <p>Choose a location to zoom in, or drag and zoom the map. The green circle shows our call-out area.</p>
+          </div>
+          <div class="map-controls" role="group" aria-label="Choose a location">
+            <button type="button" class="chip" data-place data-name="Sandton Office" data-address="12 Rivonia Road, Sandton, Johannesburg, 2196" data-note="Main office. Walk-ins welcome during business hours." data-lat="-26.1076" data-lng="28.0567" aria-pressed="false">Sandton Office</button>
+            <button type="button" class="chip" data-place data-name="Randburg Drop-off Point" data-address="45 Republic Road, Randburg, Johannesburg, 2194" data-note="Drop off your device here and we collect it daily." data-lat="-26.0940" data-lng="28.0060" aria-pressed="false">Randburg Drop-off</button>
+            <button type="button" class="chip" data-map-reset>Show full area</button>
+          </div>
+          <div id="service-map" class="service-map" role="region" aria-label="Interactive map of the Sandton office, Randburg drop-off point and call-out area"></div>
+        </div>
+      </section>
 
       <section class="section">
         <!-- Section containing the contact form -->
