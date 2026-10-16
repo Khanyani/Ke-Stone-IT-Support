@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Laptop opened on a repair bench with a screwdriver and spare SSD">
+<title>Laptop opened on a repair bench with a screwdriver and spare SSD</title>
+<rect width="800" height="600" fill="#12181f"/>
+<g stroke="#ffffff" stroke-opacity=".05"><path d="M0 0V600"/><path d="M50 0V600"/><path d="M100 0V600"/><path d="M150 0V600"/><path d="M200 0V600"/><path d="M250 0V600"/><path d="M300 0V600"/><path d="M350 0V600"/><path d="M400 0V600"/><path d="M450 0V600"/><path d="M500 0V600"/><path d="M550 0V600"/><path d="M600 0V600"/><path d="M650 0V600"/><path d="M700 0V600"/><path d="M750 0V600"/><path d="M0 0H800"/><path d="M0 50H800"/><path d="M0 100H800"/><path d="M0 150H800"/><path d="M0 200H800"/><path d="M0 250H800"/><path d="M0 300H800"/><path d="M0 350H800"/><path d="M0 400H800"/><path d="M0 450H800"/><path d="M0 500H800"/><path d="M0 550H800"/></g>
+
+<rect x="150" y="150" width="500" height="290" rx="10" fill="#1a222c" stroke="#c9f24d" stroke-width="4"/>
+<rect x="175" y="175" width="450" height="240" rx="4" fill="#0c1015"/>
+<path d="M205 215h160M205 245h260M205 275h200" stroke="#55e6d0" stroke-width="8" stroke-linecap="round"/>
+<path d="M205 325h120" stroke="#c9f24d" stroke-width="8" stroke-linecap="round"/>
+<path d="M90 470h620l-40 40H130z" fill="#1a222c" stroke="#c9f24d" stroke-width="4"/>
+<rect x="520" y="300" width="90" height="60" rx="6" fill="#c9f24d"/><path d="M535 315h60M535 330h40" stroke="#0c1015" stroke-width="6" stroke-linecap="round"/>
+<g transform="rotate(-25 90 380)"><rect x="60" y="340" width="150" height="14" rx="4" fill="#e7ecf1"/><rect x="20" y="334" width="46" height="26" rx="8" fill="#c9f24d"/></g>
+</svg>
