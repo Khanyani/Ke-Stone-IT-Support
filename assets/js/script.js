@@ -481,7 +481,8 @@
         var update = function () {
           var done = 0;
           Array.prototype.forEach.call(required, function (c) {
-            if ((c.value || "").trim() !== "") done++;
+            var filled = c.type === "checkbox" ? c.checked : (c.value || "").trim() !== "";
+            if (filled) done++;
           });
           var pct = Math.round((done / required.length) * 100);
           barFill.style.width = pct + "%";
@@ -519,8 +520,12 @@
             field.classList.remove("is-valid");
             return;
           }
+          var blurExtra = control.type === "email" ? "" : extraCheck(control, value);
           if (control.type === "email" && !EMAIL_RE.test(value)) {
             setError(field, "Please enter a valid email address (e.g. name@example.com).");
+            field.classList.remove("is-valid");
+          } else if (blurExtra) {
+            setError(field, blurExtra);
             field.classList.remove("is-valid");
           } else {
             clearError(field);
@@ -569,6 +574,9 @@
       });
     });
   }
+
+  /* Expose the few helpers features.js needs (toast + form errors) */
+  window.KeStone = { toast: toast, setError: setError, clearError: clearError };
 
   /* ---------- Boot ---------- */
   document.addEventListener("DOMContentLoaded", function () {
