@@ -232,6 +232,12 @@
         var submit = form.querySelector('[type="submit"]');
 
         if (validateForm(form)) {
+          /* Part 3: forms with data-handler are completed by features.js
+             (in-page response / email compile) instead of redirecting. */
+          if (form.hasAttribute("data-handler")) {
+            form.dispatchEvent(new CustomEvent("kestone:valid", { bubbles: true }));
+            return;
+          }
           if (submit) {
             submit.disabled = true;
             submit.dataset.label = submit.textContent;
