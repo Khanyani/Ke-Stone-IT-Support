@@ -184,6 +184,14 @@
       var label = field.querySelector("label");
       var name = label ? label.textContent.replace("*", "").trim() : "This field";
 
+      /* Required checkbox (e.g. consent) */
+      if (control.type === "checkbox" && control.hasAttribute("required") && !control.checked) {
+        setError(field, "Please tick the box to continue.");
+        firstInvalid = firstInvalid || control;
+        continue;
+      }
+      if (control.type === "checkbox" || control.type === "radio") continue;
+
       /* Required check */
       if (control.hasAttribute("required") && value === "") {
         setError(field, name + " is required.");
