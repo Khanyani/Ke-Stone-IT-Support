@@ -1599,3 +1599,21 @@ body.lb-lock { overflow: hidden; }
 .result-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.4rem; }
 form[hidden] { display: none !important; }
 
+/* ---------- Part 3 responsive rules ---------- */
+@media (max-width: 860px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .gallery { grid-template-columns: 1fr; }
+  .service-map { height: 340px; }
+  .lb-btn { width: 42px; height: 42px; }
+  .lightbox { gap: 0.2rem; padding: 0.5rem; }
+  .sort-label { width: 100%; }
+  .sort-select { flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .acc-panel,
+  .lightbox,
+  .gallery-item img,
+  .open-status .status-dot { transition: none; animation: none; }
+}
