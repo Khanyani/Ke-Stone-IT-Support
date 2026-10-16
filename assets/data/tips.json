@@ -1,0 +1,8 @@
+[
+  { "category": "security", "title": "Turn on two-factor authentication", "text": "Add a second login step to your email and banking accounts. It blocks most password-theft attacks even when your password leaks." },
+  { "category": "backup", "title": "Follow the 3-2-1 backup rule", "text": "Keep 3 copies of important files, on 2 different types of storage, with 1 copy off-site or in the cloud." },
+  { "category": "wifi", "title": "Place your router in the open", "text": "Wi-Fi works best from a central, raised spot away from microwaves, metal cabinets and thick walls." },
+  { "category": "speed", "title": "Restart weekly, update monthly", "text": "A weekly restart clears memory leaks, and monthly updates close security holes that slow machines are often hiding." },
+  { "category": "security", "title": "Spot a phishing email", "text": "Check the sender address, hover over links before clicking, and be suspicious of anything urgent that asks for a password or payment." },
+  { "category": "backup", "title": "Test your restore", "text": "A backup you have never restored is only a hope. Open a few backed-up files every quarter to confirm they work." }
+]
