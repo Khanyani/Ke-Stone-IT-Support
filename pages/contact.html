@@ -514,6 +514,8 @@
                 <textarea
                   id="message"
                   name="message"
+                  minlength="10"
+                  placeholder="How can we help? (at least 10 characters)"
                   required
                 ></textarea>
                 <!-- Allows the user to enter their message -->
@@ -704,7 +706,9 @@
 
     <!-- ================= JAVASCRIPT ================= -->
 
-    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/vendor/leaflet/leaflet.js" defer></script>
+    <script src="../assets/js/features.js" defer></script>
     <!-- Loads JavaScript for form validation and other features -->
 
   </body>
