@@ -195,3 +195,102 @@
     );
   }
 
+  /* ---------- 3. Interactive map (Leaflet) ---------- */
+  function initMap() {
+    var el = document.getElementById("service-map");
+    if (!el) return;
+    if (!window.L) {
+      el.innerHTML = '<p class="map-fallback">The interactive map could not load. Please use the address details above.</p>';
+      return;
+    }
+
+    var places = qsa("[data-place]").map(function (btn) {
+      return {
+        btn: btn,
+        name: btn.getAttribute("data-name"),
+        address: btn.getAttribute("data-address"),
+        note: btn.getAttribute("data-note"),
+        lat: parseFloat(btn.getAttribute("data-lat")),
+        lng: parseFloat(btn.getAttribute("data-lng")),
+      };
+    });
+    if (!places.length) return;
+
+    L.Icon.Default.imagePath = ROOT + "assets/vendor/leaflet/images/";
+    var map = L.map(el, { scrollWheelZoom: false }).setView([-26.1, 28.03], 12);
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    var bounds = [];
+    places.forEach(function (p) {
+      var marker = L.marker([p.lat, p.lng], { title: p.name, alt: p.name }).addTo(map);
+      var dir =
+        "https://www.google.com/maps/dir/?api=1&destination=" +
+        encodeURIComponent(p.address);
+      var popup = document.createElement("div");
+      var h = document.createElement("strong");
+      h.textContent = p.name;
+      var a = document.createElement("p");
+      a.textContent = p.address;
+      var n = document.createElement("p");
+      n.textContent = p.note;
+      var link = document.createElement("a");
+      link.href = dir;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.textContent = "Get directions";
+      popup.appendChild(h);
+      popup.appendChild(a);
+      popup.appendChild(n);
+      popup.appendChild(link);
+      marker.bindPopup(popup);
+      p.marker = marker;
+      bounds.push([p.lat, p.lng]);
+
+      p.btn.addEventListener("click", function () {
+        places.forEach(function (o) {
+          o.btn.classList.toggle("is-active", o === p);
+          o.btn.setAttribute("aria-pressed", o === p ? "true" : "false");
+        });
+        map.flyTo([p.lat, p.lng], 15, { duration: 0.8 });
+        marker.openPopup();
+      });
+    });
+
+    /* Service area: call-outs within roughly 20 km of the Sandton office */
+    L.circle([places[0].lat, places[0].lng], {
+      radius: 20000,
+      color: "#a9d130",
+      weight: 2,
+      fillColor: "#c9f24d",
+      fillOpacity: 0.08,
+    })
+      .addTo(map)
+      .bindTooltip("Call-out service area (about 20 km)", { sticky: true });
+
+    map.fitBounds(L.latLng(places[0].lat, places[0].lng).toBounds(40000), { padding: [10, 10] });
+
+    /* Scroll-wheel zoom only after the visitor clicks the map, so the page can still scroll */
+    map.on("focus click", function () {
+      map.scrollWheelZoom.enable();
+    });
+    map.on("blur", function () {
+      map.scrollWheelZoom.disable();
+    });
+
+    var reset = document.querySelector("[data-map-reset]");
+    if (reset) {
+      reset.addEventListener("click", function () {
+        map.closePopup();
+        places.forEach(function (o) {
+          o.btn.classList.remove("is-active");
+          o.btn.setAttribute("aria-pressed", "false");
+        });
+        map.flyToBounds(L.latLng(places[0].lat, places[0].lng).toBounds(40000), { padding: [10, 10] });
+      });
+    }
+  }
+
