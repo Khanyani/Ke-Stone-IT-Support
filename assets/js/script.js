@@ -203,6 +203,14 @@
       if (control.type === "email" && value !== "" && !EMAIL_RE.test(value)) {
         setError(field, "Please enter a valid email address (e.g. name@example.com).");
         firstInvalid = firstInvalid || control;
+        continue;
+      }
+
+      /* Part 3: phone, date and minimum-length rules */
+      var extra = extraCheck(control, value);
+      if (extra) {
+        setError(field, extra);
+        firstInvalid = firstInvalid || control;
       }
     }
 
