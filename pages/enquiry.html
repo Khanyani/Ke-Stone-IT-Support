@@ -156,6 +156,7 @@
         <h1>Book a repair, setup or support session</h1>
         <!-- Main page heading -->
 
+        <p class="open-status" data-open-status aria-live="polite"></p>
         <p class="lead">
           Fill in the form below and we'll be in touch — usually within 24 hours — with next steps
           and an honest estimate. Fields marked with * are required.
@@ -175,7 +176,7 @@
 
         <!-- Booking form -->
 
-        <form class="form-card" data-validate novalidate>
+        <form class="form-card" data-validate data-handler="enquiry" data-endpoint="" action="thank-you.html" method="get" novalidate>
           <!--
             Form used to collect customer support information.
 
@@ -241,6 +242,9 @@
                 id="phone"
                 name="phone"
                 autocomplete="tel"
+                inputmode="tel"
+                placeholder="082 123 4567"
+                maxlength="20"
                 required
               />
               <!-- Collects the user's phone number -->
