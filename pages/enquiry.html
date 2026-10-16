@@ -361,6 +361,7 @@
               <textarea
                 id="details"
                 name="details"
+                minlength="10"
                 placeholder="What device is affected, what happens, and when it started."
                 required
               ></textarea>
@@ -376,6 +377,13 @@
 
           <!-- Form-wide error message -->
 
+          <div class="form-grid">
+            <div class="field field-full field-check">
+              <label for="consent"><input type="checkbox" id="consent" name="consent" required /> I agree that Ke'Stone IT Support may contact me about this request.*</label>
+              <p class="error-msg" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="estimate-panel" data-estimate aria-live="polite"></div>
           <p
             class="error-msg"
             data-form-summary
@@ -552,7 +560,8 @@
 
   <!-- ================= JAVASCRIPT ================= -->
 
-  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/features.js" defer></script>
   <!-- Loads JavaScript for form validation and other website features -->
 
 </body>
