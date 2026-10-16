@@ -338,6 +338,20 @@
 
             <!-- Issue description -->
 
+            <div class="field">
+              <label for="preferredDate">Preferred Date (optional)</label>
+              <input type="date" id="preferredDate" name="preferredDate" />
+              <p class="error-msg" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <fieldset class="radio-group">
+                <legend>Where should we help?</legend>
+                <label><input type="radio" name="serviceMode" value="onsite" checked /> At my location</label>
+                <label><input type="radio" name="serviceMode" value="dropoff" /> I'll drop it off</label>
+                <label><input type="radio" name="serviceMode" value="remote" /> Remotely</label>
+              </fieldset>
+              <p class="error-msg" aria-live="polite"></p>
+            </div>
             <div class="field field-full">
 
               <label for="details">
