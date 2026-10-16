@@ -61,6 +61,7 @@ All prices are indicative; final quotes depend on parts, travel and time and are
 Switching to **Yearly** billing shows the yearly price (saving 20%).
 
 ## Key Features and Functionality
+<<<<<<< Updated upstream
 
 **Layout and navigation**
 - Responsive multi-page website with semantic HTML5 (`header`, `nav`, `main`, `section`, `footer`).
@@ -113,6 +114,41 @@ Switching to **Yearly** billing shows the yearly price (saving 20%).
 - Vanilla JavaScript (no frameworks or libraries)
 - Google Maps embeds
 - GitHub and GitHub Pages (version control and hosting)
+=======
+**Part 2 (original build)**
+- Responsive 5-page website: Home, About Us, Services, Enquiry, and Contact.
+- Sticky header navigation with a mobile hamburger menu, skip link and `aria-current` page highlighting.
+- Service cards with indicative pricing, live search + category filter, monthly/yearly pricing switch.
+- Scroll reveal, animated counters, toasts, back-to-top button and scroll-progress bar.
+- Semantic HTML5 (`header`, `nav`, `main`, `section`, `footer`) with a shared stylesheet and script.
+
+**Part 3 (new)**
+| Feature | Where | Files |
+|---|---|---|
+| Accordion FAQ (keyboard + ARIA, one answer open at a time) | `services.html` | `features.js`, `style.css` |
+| Image gallery + lightbox (next/previous, Esc, backdrop click, swipe, focus trap) | `about.html` | `features.js` |
+| Interactive Leaflet map: 2 markers with popups, service-area circle, "fly to" buttons, directions links | `contact.html` | `features.js`, `assets/vendor/leaflet/` |
+| Sort control (name / price) added to the existing search + filter | `services.html` | `features.js` |
+| Dynamic content: "Open now" status computed from business hours (SA time) | Home, Contact, Enquiry | `features.js` |
+| Dynamic content: IT tips loaded from JSON with topic filter | `index.html` | `assets/data/tips.json`, `features.js` |
+| Live cost/response estimate that changes with the selected issue and urgency | `enquiry.html` | `features.js` |
+| Enquiry form: new fields (preferred date, service mode radios, consent checkbox), AJAX (`fetch`) submit and in-page response with reference number | `enquiry.html` | `script.js`, `features.js` |
+| Contact form: message type, subject, optional phone; validated data is compiled into an email (`mailto:`) to `hello@kestone-it.co.za` | `contact.html` | `features.js` |
+| SEO: unique titles/descriptions, Open Graph tags, canonical URLs, JSON-LD (`ComputerRepair` and `FAQPage`), `sitemap.xml`, `robots.txt`, favicon, descriptive image names and alt text | all pages | HTML head, root files |
+
+### Form design
+The two forms serve different purposes, as the brief requires:
+- **Enquiry (`pages/enquiry.html`)** - a request about a specific service. After validation the visitor sees an indicative cost, the response they can expect for their urgency, and a reference number, without a page reload. `form action="thank-you.html" method="get"` is the no-JavaScript fallback. To send the data to a real service (e.g. Formspree), put its URL in the form's `data-endpoint` attribute; the same `fetch` code will POST to it.
+- **Contact (`pages/contact.html`)** - a general message. After validation the name, email, phone, message type, subject and message are compiled into an email addressed to the recipient defined in `features.js` (`CONTACT_RECIPIENT`) and opened in the visitor's email app. `action="mailto:..."` is the fallback.
+
+**Validation (HTML5 + JavaScript):** `required`, `type=email/tel/date`, `minlength`/`maxlength`, plus JavaScript rules in `script.js` for email format, South African phone format, dates (not in the past, not on a Sunday, within 6 months), minimum lengths and the consent checkbox. Errors appear next to the field; both valid and invalid input were tested.
+
+### SEO keywords targeted
+"IT support Johannesburg", "laptop repair Sandton", "Wi-Fi setup Randburg", "small business IT support", "remote IT support", "IT maintenance plan". These appear naturally in titles, descriptions, headings and body text. Off-page/local SEO: consistent business name, address and hours across pages and structured data; the Facebook, LinkedIn and WhatsApp footer links are the starting point for social promotion and a Google Business Profile listing once the business is live.
+
+### Security notes
+Input is validated on the client; no API keys, passwords or credentials are stored in the repository (Leaflet is vendored locally and OpenStreetMap tiles need no key). User text is inserted with `textContent`, not `innerHTML`. External links use `rel="noopener"`. GitHub Pages serves the site over HTTPS. Because the site is static, real server-side validation would be needed if a backend is added.
+>>>>>>> Stashed changes
 
 ## Timeline and Milestones
 | Milestone | Description | Status |
@@ -120,9 +156,15 @@ Switching to **Yearly** billing shows the yearly price (saving 20%).
 | Weeks 1–2 | Research, service/pricing definition, and wireframing | Complete (Part 1) |
 | Weeks 3–4 | Visual design and content writing | Complete (Part 1) |
 | Weeks 5–6 | Development: HTML structure, CSS styling, booking form | Complete (Part 2) |
+<<<<<<< Updated upstream
 | Week 7 | Testing (form validation, mobile responsiveness, cross-browser) | Complete (Part 2) |
 | Week 8 | Launch and GitHub repository handover | Complete (Part 2) — live on GitHub Pages |
 | Part 3 | Further functionality, accessibility, and content refinement | Complete — see "Key Features and Functionality" |
+=======
+| Week 7 | Testing (form validation, mobile responsiveness, cross-browser) | Complete (Part 2 and Part 3) |
+| Week 8 | Launch and GitHub repository handover | Complete (Part 3) |
+| Part 3 | Interactive features, SEO, form validation, GitHub and deployment | Complete |
+>>>>>>> Stashed changes
 
 ## Part 1 Details
 Part 1 consisted of a written Website Project Proposal covering:
@@ -139,6 +181,7 @@ Part 1 consisted of a written Website Project Proposal covering:
 The Part 1 proposal document is included in this repository as
 `ST10489373__ICE_TASK_1_WEDE5020.docx`.
 
+<<<<<<< Updated upstream
 ## Part 2 Details
 Part 2 turned the proposal into a working website: a sitemap and file structure, the shared header/footer,
 the Home, About Us, Services, Request Support and Contact pages, a shared stylesheet and script, and
@@ -150,6 +193,9 @@ Workshop" look, and the accessibility improvements listed above.
 
 ## Part 3
 Coming soon
+=======
+*(Part 2 and Part 3 details are covered in this README and the website files below.)*
+>>>>>>> Stashed changes
 
 ## Sitemap
 ```
@@ -167,10 +213,16 @@ copyright).
 ```
 Ke-Stone-IT-Support/
 |-- index.html
+<<<<<<< Updated upstream
+=======
+|-- robots.txt
+|-- sitemap.xml
+>>>>>>> Stashed changes
 |-- README.md
 |-- pages/
 |    |-- about.html
 |    |-- services.html
+<<<<<<< Updated upstream
 |    |-- contact.html
 |    |-- enquiry.html
 |    `-- thank-you.html
@@ -197,6 +249,53 @@ Ke-Stone-IT-Support/
 | 2026-08-11 | Part 2: Built the main pages with shared header/footer navigation. |
 | 2026-10-10 | Part 3: Reorganised pages into `pages/` and assets into `assets/`; added Thank You page, services search/filter, maintenance plans with monthly/yearly billing switch, live form feedback, toasts and scroll/pointer effects, "Night Workshop" redesign and accessibility improvements. |
 | 2026-10-10 | Docs: Rewrote this README to reflect the live website. |
+=======
+|    |-- enquiry.html
+|    |-- contact.html
+|    `-- thank-you.html
+`-- assets/
+     |-- css/style.css
+     |-- js/script.js        (shared behaviour + form validation)
+     |-- js/features.js      (Part 3 features)
+     |-- data/tips.json      (dynamic content)
+     |-- images/             (favicon + gallery/ illustrations)
+     `-- vendor/leaflet/     (Leaflet 1.9.4, BSD-2 licence)
+```
+
+## How to Run
+1. Download or clone the repository: `git clone https://github.com/Khanyani/Ke-Stone-IT-Support.git`
+2. Open `index.html` in a browser. For full behaviour (the IT-tips JSON is fetched), serve the folder with a local server instead, e.g. `python -m http.server 8000` and visit `http://localhost:8000/`, or use the VS Code Live Server extension.
+3. The interactive map needs an internet connection for the OpenStreetMap tiles.
+
+## Deployment
+- **Repository:** https://github.com/Khanyani/Ke-Stone-IT-Support
+- **Live website (GitHub Pages, branch `main`, root folder):** https://khanyani.github.io/Ke-Stone-IT-Support/ *(to be submitted on ARC; confirm the URL after enabling Pages under Settings > Pages)*
+- All paths are relative, so the site works from a sub-folder URL. The canonical URLs and `sitemap.xml` use the address above; update them if a different host (e.g. Netlify) is used.
+
+## Testing Summary
+| Area | Test | Result |
+|---|---|---|
+| Feedback fixes | Re-tested the duplicate footer on the home page | Fixed - one footer |
+| JavaScript | Accordion, lightbox (click, arrows, Esc), map markers/popups, filter, search, sort, tips filter | Pass |
+| Forms | Empty, invalid phone/email, short text, unticked consent, then valid input on both forms | Errors shown beside fields; valid input follows the intended path |
+| Responsive | 375 px width on all pages | No horizontal overflow; menu, map and forms usable |
+| SEO | Titles, descriptions, headings, alt text, sitemap, robots | Present on every page |
+
+## Changelog
+| Date / Version | Area | Issue / Feedback | Change Made | Reason / Result |
+|---|---|---|---|---|
+| 2026-08-05 | Part 1 | Proposal had no reference list | Added Harvard-referenced Reference List to the written proposal | Sources are traceable |
+| 2026-08-11 | Part 2 | Site structure undocumented | Created sitemap and file/folder structure documentation | Easy to navigate the project |
+| 2026-08-11 | Part 2 | No website yet | Built `index.html`, `about.html`, `services.html`, `enquiry.html`, `contact.html` with shared header/footer | Working 5-page site |
+| v3.0 2026-10-15 | Home page | The home page showed two footers (a static footer plus an empty include that script.js filled with a second copy) | Removed the empty `data-include="footer"` slot from `index.html` | One footer, correct layout |
+| v3.1 2026-10-15 | Forms | Phone, date and text-length values were never checked, and consent could not be required | Added `extraCheck()` in `script.js`: SA phone pattern, date rules, `minlength`, required checkbox | Prevents invalid submissions |
+| v3.2 2026-10-15 | Forms | Enquiry and contact forms ended the same way (redirect to the thank-you page) | Enquiry now shows an in-page response (estimate, reference, expected reply) via `fetch`; contact compiles an email to the recipient; added fields and `action`/`method` attributes | Each form serves its own purpose |
+| v3.3 2026-10-15 | Interactivity | Site had no accordion, map, gallery or dynamic content | Added accordion FAQ, Leaflet map, gallery + lightbox, sort control, open-now status, JSON-loaded tips, live estimate (`features.js`) | Meets Part 3 functionality brief |
+| v3.4 2026-10-15 | SEO | Missing descriptions on home, enquiry and thank-you pages; no social tags, structured data, sitemap or favicon | Added unique descriptions, Open Graph tags, canonical links, JSON-LD, `sitemap.xml`, `robots.txt`, favicon; `noindex` on the thank-you page | Better search-result relevance |
+| v3.5 2026-10-15 | Performance | Scripts blocked page rendering | Added `defer` to script tags | Faster first paint |
+| v3.6 2026-10-16 | Map | `fitBounds` was called on a circle not yet on the map, which stopped later features (including the contact form) from starting | Replaced it with `L.latLng().toBounds()` and isolated each feature in `try/catch` | Contact form and map both work |
+| v3.7 2026-10-16 | Docs | README out of date | Updated features, structure, how to run, deployment, testing, references | Lecturer can verify the work |
+>>>>>>> Stashed changes
 
 ## References
 Baymard Institute (2025) *E-commerce checkout usability research.* Available at:
@@ -222,3 +321,23 @@ World Wide Web Consortium (W3C) (2023) *Web content accessibility guidelines (WC
 
 WordPress.org (2025) *WordPress documentation.* Available at:
 [https://wordpress.org/documentation/](https://wordpress.org/documentation/) (Accessed: 5 August 2026).
+
+Agafonkin, V. (2023) *Leaflet: an open-source JavaScript library for interactive maps*, version 1.9.4. Available at:
+[https://leafletjs.com/](https://leafletjs.com/) (Accessed: 15 October 2026).
+
+Google (2025) *Search Engine Optimization (SEO) starter guide.* Available at:
+[https://developers.google.com/search/docs/fundamentals/seo-starter-guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
+(Accessed: 15 October 2026).
+
+Mozilla Developer Network (2025) *Client-side form validation.* Available at:
+[https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Form_validation](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Form_validation)
+(Accessed: 15 October 2026).
+
+OpenStreetMap contributors (2026) *OpenStreetMap.* Available at:
+[https://www.openstreetmap.org/copyright](https://www.openstreetmap.org/copyright) (Accessed: 15 October 2026).
+
+Schema.org (2026) *LocalBusiness and FAQPage structured data.* Available at:
+[https://schema.org/](https://schema.org/) (Accessed: 15 October 2026).
+
+World Wide Web Consortium (W3C) (2025) *WAI-ARIA Authoring Practices Guide: Accordion and Dialog patterns.* Available at:
+[https://www.w3.org/WAI/ARIA/apg/](https://www.w3.org/WAI/ARIA/apg/) (Accessed: 15 October 2026).
