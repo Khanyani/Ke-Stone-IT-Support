@@ -1490,3 +1490,25 @@ body.lb-lock { overflow: hidden; }
 .leaflet-popup-content p { margin: 0.3rem 0; line-height: 1.4; }
 .leaflet-popup-content a { color: #3d5a00; font-weight: 600; }
 
+/* ---------- Sort control (services) ---------- */
+.sort-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.sort-select {
+  padding: 0.5rem 0.6rem;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+.sort-select:focus { outline: none; border-color: var(--lime); }
+
