@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Shield with a padlock representing cybersecurity protection">
+<title>Shield with a padlock representing cybersecurity protection</title>
+<rect width="800" height="600" fill="#12181f"/>
+<g stroke="#ffffff" stroke-opacity=".05"><path d="M0 0V600"/><path d="M50 0V600"/><path d="M100 0V600"/><path d="M150 0V600"/><path d="M200 0V600"/><path d="M250 0V600"/><path d="M300 0V600"/><path d="M350 0V600"/><path d="M400 0V600"/><path d="M450 0V600"/><path d="M500 0V600"/><path d="M550 0V600"/><path d="M600 0V600"/><path d="M650 0V600"/><path d="M700 0V600"/><path d="M750 0V600"/><path d="M0 0H800"/><path d="M0 50H800"/><path d="M0 100H800"/><path d="M0 150H800"/><path d="M0 200H800"/><path d="M0 250H800"/><path d="M0 300H800"/><path d="M0 350H800"/><path d="M0 400H800"/><path d="M0 450H800"/><path d="M0 500H800"/><path d="M0 550H800"/></g>
+
+<path d="M400 80l200 70v150c0 120-90 200-200 240-110-40-200-120-200-240V150z" fill="#1a222c" stroke="#c9f24d" stroke-width="6" stroke-linejoin="round"/>
+<rect x="320" y="270" width="160" height="130" rx="14" fill="#c9f24d"/>
+<path d="M350 270v-40a50 50 0 0 1 100 0v40" fill="none" stroke="#c9f24d" stroke-width="18"/>
+<circle cx="400" cy="330" r="16" fill="#0c1015"/><path d="M400 340v34" stroke="#0c1015" stroke-width="10" stroke-linecap="round"/>
+</svg>
