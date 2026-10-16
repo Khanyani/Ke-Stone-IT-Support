@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Remote support session: a technician laptop connected to a customer screen">
+<title>Remote support session: a technician laptop connected to a customer screen</title>
+<rect width="800" height="600" fill="#12181f"/>
+<g stroke="#ffffff" stroke-opacity=".05"><path d="M0 0V600"/><path d="M50 0V600"/><path d="M100 0V600"/><path d="M150 0V600"/><path d="M200 0V600"/><path d="M250 0V600"/><path d="M300 0V600"/><path d="M350 0V600"/><path d="M400 0V600"/><path d="M450 0V600"/><path d="M500 0V600"/><path d="M550 0V600"/><path d="M600 0V600"/><path d="M650 0V600"/><path d="M700 0V600"/><path d="M750 0V600"/><path d="M0 0H800"/><path d="M0 50H800"/><path d="M0 100H800"/><path d="M0 150H800"/><path d="M0 200H800"/><path d="M0 250H800"/><path d="M0 300H800"/><path d="M0 350H800"/><path d="M0 400H800"/><path d="M0 450H800"/><path d="M0 500H800"/><path d="M0 550H800"/></g>
+
+<rect x="60" y="180" width="300" height="200" rx="10" fill="#1a222c" stroke="#55e6d0" stroke-width="4"/><rect x="40" y="395" width="340" height="18" rx="6" fill="#1a222c" stroke="#55e6d0" stroke-width="4"/>
+<rect x="440" y="180" width="300" height="200" rx="10" fill="#1a222c" stroke="#c9f24d" stroke-width="4"/><rect x="420" y="395" width="340" height="18" rx="6" fill="#1a222c" stroke="#c9f24d" stroke-width="4"/>
+<path d="M370 280h60" stroke="#c9f24d" stroke-width="8" stroke-dasharray="4 14" stroke-linecap="round"/>
+<path d="M500 230l8 70 20-18 18 36 14-8-18-36 26-4z" fill="#e7ecf1"/>
+<path d="M95 220h200M95 255h150M95 290h180" stroke="#55e6d0" stroke-width="8" stroke-linecap="round" stroke-opacity=".7"/>
+</svg>
