@@ -420,7 +420,7 @@
 
           <!-- Contact form -->
 
-          <form class="form-card" data-validate novalidate>
+          <form class="form-card" data-validate data-handler="contact" action="mailto:hello@kestone-it.co.za" method="post" enctype="text/plain" novalidate>
             <!--
               Contact form.
 
@@ -482,6 +482,28 @@
 
               <!-- Message field -->
 
+              <div class="field">
+                <label for="contactPhone">Phone (optional)</label>
+                <input type="tel" id="contactPhone" name="contactPhone" autocomplete="tel" inputmode="tel" placeholder="082 123 4567" maxlength="20" />
+                <p class="error-msg" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="messageType">Message type*</label>
+                <select id="messageType" name="messageType" required>
+                  <option value="">Please select…</option>
+                  <option value="general">General question</option>
+                  <option value="quote">Quote request</option>
+                  <option value="feedback">Feedback or compliment</option>
+                  <option value="partnership">Business or partnership</option>
+                  <option value="other">Other</option>
+                </select>
+                <p class="error-msg" aria-live="polite"></p>
+              </div>
+              <div class="field field-full">
+                <label for="subject">Subject*</label>
+                <input type="text" id="subject" name="subject" minlength="3" maxlength="80" required />
+                <p class="error-msg" aria-live="polite"></p>
+              </div>
               <div class="field field-full">
 
                 <label for="message">
