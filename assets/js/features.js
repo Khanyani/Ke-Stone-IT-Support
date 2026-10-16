@@ -294,6 +294,70 @@
     }
   }
 
+  /* ---------- 4. Sort control for the services grid ---------- */
+  function initSort() {
+    var bar = document.querySelector(".filter-bar");
+    if (!bar) return;
+    var grid = bar.nextElementSibling;
+    if (!grid || !grid.classList.contains("grid")) return;
+    var cards = qsa(".card", grid);
+    cards.forEach(function (c, i) {
+      c.setAttribute("data-order", String(i));
+    });
+
+    function price(card) {
+      var p = card.querySelector(".price");
+      var m = p ? p.textContent.replace(/\s/g, "").match(/R(\d+)/) : null;
+      return m ? parseInt(m[1], 10) : 0;
+    }
+    function name(card) {
+      var h = card.querySelector("h3");
+      return h ? h.textContent.trim().toLowerCase() : "";
+    }
+
+    var wrap = document.createElement("label");
+    wrap.className = "sort-label";
+    wrap.innerHTML =
+      '<span>Sort by</span><select class="sort-select" aria-label="Sort services">' +
+      '<option value="default">Our order</option>' +
+      '<option value="name">Name A–Z</option>' +
+      '<option value="low">Price: low to high</option>' +
+      '<option value="high">Price: high to low</option></select>';
+    var count = bar.querySelector(".filter-count");
+    bar.insertBefore(wrap, count);
+
+    wrap.querySelector("select").addEventListener("change", function (e) {
+      var mode = e.target.value;
+      var sorted = cards.slice().sort(function (a, b) {
+        if (mode === "name") return name(a).localeCompare(name(b));
+        if (mode === "low") return price(a) - price(b);
+        if (mode === "high") return price(b) - price(a);
+        return parseInt(a.getAttribute("data-order"), 10) - parseInt(b.getAttribute("data-order"), 10);
+      });
+      sorted.forEach(function (c) {
+        grid.appendChild(c);
+      });
+    });
+  }
+
+  /* ---------- 5a. "Open now" status from business hours ---------- */
+  var HOURS = {
+    1: [8, 0, 17, 30], 2: [8, 0, 17, 30], 3: [8, 0, 17, 30], 4: [8, 0, 17, 30], 5: [8, 0, 17, 30],
+    6: [9, 0, 13, 0],
+  };
+  var DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  function pad(n) {
+    return (n < 10 ? "0" : "") + n;
+  }
+
+  function johannesburgNow() {
+    /* Business hours are in South African time regardless of visitor time zone */
+    var parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Africa/Johannesburg",
+      weekday: "short",
+      hour: "2-digit",
+      minute: "2-digit",
       hour12: false,
     }).formatToParts(new Date());
     var out = {};
@@ -624,3 +688,16 @@
     });
   }
 
+  /* ---------- Boot ---------- */
+  document.addEventListener("DOMContentLoaded", function () {
+    /* Each feature is isolated so one failure cannot stop the others */
+    [initAccordion, initLightbox, initMap, initSort, initOpenStatus, initTips,
+      initDateLimits, initEstimate, initEnquiryForm, initContactForm].forEach(function (fn) {
+      try {
+        fn();
+      } catch (err) {
+        if (window.console) console.warn("Feature failed: " + fn.name, err);
+      }
+    });
+  });
+})();
