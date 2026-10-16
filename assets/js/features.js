@@ -294,3 +294,333 @@
     }
   }
 
+      hour12: false,
+    }).formatToParts(new Date());
+    var out = {};
+    parts.forEach(function (p) {
+      out[p.type] = p.value;
+    });
+    return { day: DAYS.indexOf(out.weekday), mins: (parseInt(out.hour, 10) % 24) * 60 + parseInt(out.minute, 10) };
+  }
+
+  function statusText() {
+    var now = johannesburgNow();
+    var today = HOURS[now.day];
+    if (today) {
+      var open = today[0] * 60 + today[1];
+      var close = today[2] * 60 + today[3];
+      if (now.mins >= open && now.mins < close) {
+        return { open: true, text: "Open now · closes " + pad(today[2]) + ":" + pad(today[3]) };
+      }
+      if (now.mins < open) {
+        return { open: false, text: "Closed · opens today at " + pad(today[0]) + ":" + pad(today[1]) };
+      }
+    }
+    for (var i = 1; i <= 7; i++) {
+      var d = (now.day + i) % 7;
+      if (HOURS[d]) {
+        return {
+          open: false,
+          text: "Closed · opens " + (i === 1 ? "tomorrow" : DAYS[d]) + " at " + pad(HOURS[d][0]) + ":" + pad(HOURS[d][1]),
+        };
+      }
+    }
+    return { open: false, text: "Closed" };
+  }
+
+  function initOpenStatus() {
+    var els = qsa("[data-open-status]");
+    if (!els.length) return;
+    function render() {
+      var s = statusText();
+      els.forEach(function (el) {
+        el.textContent = "";
+        var dot = document.createElement("span");
+        dot.className = "status-dot";
+        dot.setAttribute("aria-hidden", "true");
+        el.appendChild(dot);
+        el.appendChild(document.createTextNode(s.text + " (SA time)"));
+        el.classList.toggle("is-open", s.open);
+        el.classList.toggle("is-closed", !s.open);
+      });
+    }
+    render();
+    setInterval(render, 60000);
+  }
+
+  /* ---------- 5b. IT tips loaded from JSON, with category filter ---------- */
+  var TIPS_FALLBACK = [
+    { category: "security", title: "Turn on two-factor authentication", text: "Add a second login step to your email and banking accounts. It blocks most password-theft attacks even when your password leaks." },
+    { category: "backup", title: "Follow the 3-2-1 backup rule", text: "Keep 3 copies of important files, on 2 different types of storage, with 1 copy off-site or in the cloud." },
+    { category: "wifi", title: "Place your router in the open", text: "Wi-Fi works best from a central, raised spot away from microwaves, metal cabinets and thick walls." },
+    { category: "speed", title: "Restart weekly, update monthly", text: "A weekly restart clears memory leaks, and monthly updates close security holes that slow machines are often hiding." },
+  ];
+  var TIP_LABELS = { all: "All", security: "Security", backup: "Backup", wifi: "Wi-Fi", speed: "Speed" };
+
+  function initTips() {
+    var host = document.querySelector("[data-tips]");
+    if (!host) return;
+
+    function render(tips) {
+      host.innerHTML = "";
+      var cats = ["all"];
+      tips.forEach(function (t) {
+        if (cats.indexOf(t.category) < 0) cats.push(t.category);
+      });
+
+      var chips = document.createElement("div");
+      chips.className = "filter-bar tips-chips";
+      chips.setAttribute("role", "group");
+      chips.setAttribute("aria-label", "Filter tips by topic");
+      cats.forEach(function (c, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "chip" + (i === 0 ? " is-active" : "");
+        b.setAttribute("data-cat", c);
+        b.textContent = TIP_LABELS[c] || c;
+        chips.appendChild(b);
+      });
+
+      var grid = document.createElement("div");
+      grid.className = "grid grid-3";
+      tips.forEach(function (t) {
+        var card = document.createElement("article");
+        card.className = "card tip-card";
+        card.setAttribute("data-cat", t.category);
+        var tag = document.createElement("p");
+        tag.className = "tip-tag";
+        tag.textContent = TIP_LABELS[t.category] || t.category;
+        var h = document.createElement("h3");
+        h.textContent = t.title;
+        var p = document.createElement("p");
+        p.textContent = t.text;
+        card.appendChild(tag);
+        card.appendChild(h);
+        card.appendChild(p);
+        grid.appendChild(card);
+      });
+
+      chips.addEventListener("click", function (e) {
+        var b = e.target.closest(".chip");
+        if (!b) return;
+        qsa(".chip", chips).forEach(function (c) {
+          c.classList.toggle("is-active", c === b);
+        });
+        var cat = b.getAttribute("data-cat");
+        qsa(".tip-card", grid).forEach(function (c) {
+          c.classList.toggle("is-filtered-out", cat !== "all" && c.getAttribute("data-cat") !== cat);
+        });
+      });
+
+      host.appendChild(chips);
+      host.appendChild(grid);
+    }
+
+    /* Load from JSON; fall back to built-in tips if fetch is blocked (e.g. file://) */
+    fetch(ROOT + "assets/data/tips.json")
+      .then(function (r) {
+        if (!r.ok) throw new Error("tips.json " + r.status);
+        return r.json();
+      })
+      .then(render)
+      .catch(function () {
+        render(TIPS_FALLBACK);
+      });
+  }
+
+  /* ---------- 5c. Live estimate on the enquiry form ---------- */
+  var ISSUES = {
+    repair: { label: "PC / Laptop repair", price: "From R450 per device, after diagnosis" },
+    network: { label: "Network setup", price: "From R700 per site setup" },
+    security: { label: "Cybersecurity basics", price: "From R600 per assessment & setup" },
+    remote: { label: "Remote support", price: "From R250 per 30-minute session" },
+    maintenance: { label: "Maintenance plan", price: "From R450 per month (Home Essentials), R900 per month for up to 5 devices" },
+    other: { label: "Other", price: "We'll quote after a free chat about the problem" },
+  };
+  var URGENCY = {
+    urgent: "Marked urgent — we'll prioritise your request. Calling +27 11 000 0000 is the fastest way to reach us.",
+    week: "We'll book you in sometime this week and confirm a time.",
+    flexible: "Flexible — we'll offer the next convenient slot, usually within 24 hours of replying.",
+  };
+
+  function initEstimate() {
+    var panel = document.querySelector("[data-estimate]");
+    var form = document.querySelector("form[data-handler='enquiry']");
+    if (!panel || !form) return;
+    var issue = form.elements.issueType;
+    var urgency = form.elements.urgency;
+
+    function update() {
+      var i = ISSUES[issue.value];
+      panel.classList.toggle("is-ready", !!i);
+      if (!i) {
+        panel.innerHTML = "<strong>Your estimate</strong><p>Choose a type of issue to see an indicative price.</p>";
+        return;
+      }
+      var html = "<strong>Your estimate</strong><p class=\"estimate-price\"></p><p class=\"estimate-note\"></p>";
+      panel.innerHTML = html;
+      panel.querySelector(".estimate-price").textContent = i.label + ": " + i.price;
+      panel.querySelector(".estimate-note").textContent =
+        (URGENCY[urgency.value] || "We usually reply within 24 hours.") + " Final quotes are always confirmed before work starts.";
+    }
+    issue.addEventListener("change", update);
+    urgency.addEventListener("change", update);
+    update();
+  }
+
+  /* Preferred date: no past dates, within 6 months */
+  function initDateLimits() {
+    qsa("input[type='date']").forEach(function (d) {
+      var today = new Date();
+      var max = new Date();
+      max.setDate(max.getDate() + 180);
+      function iso(dt) {
+        return dt.getFullYear() + "-" + pad(dt.getMonth() + 1) + "-" + pad(dt.getDate());
+      }
+      d.min = iso(today);
+      d.max = iso(max);
+    });
+  }
+
+  /* ---------- 6. Form handlers ---------- */
+  function showResult(form, build) {
+    var panel = document.createElement("div");
+    panel.className = "form-result";
+    panel.setAttribute("role", "status");
+    panel.setAttribute("tabindex", "-1");
+    build(panel);
+    form.hidden = true;
+    form.parentNode.insertBefore(panel, form.nextSibling);
+    panel.focus();
+    panel.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    var again = panel.querySelector("[data-again]");
+    if (again) {
+      again.addEventListener("click", function () {
+        panel.parentNode.removeChild(panel);
+        form.reset();
+        form.hidden = false;
+        qsa(".field", form).forEach(function (f) {
+          f.classList.remove("is-valid", "has-error");
+        });
+        var submit = form.querySelector('[type="submit"]');
+        if (submit) {
+          submit.disabled = false;
+          if (submit.dataset.label) submit.textContent = submit.dataset.label;
+        }
+        form.dispatchEvent(new Event("input", { bubbles: true }));
+        form.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+    }
+  }
+
+  function reference() {
+    var d = new Date();
+    return "KS-" + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + Math.floor(1000 + Math.random() * 9000);
+  }
+
+  function setBusy(form, busy) {
+    var submit = form.querySelector('[type="submit"]');
+    if (!submit) return;
+    if (busy) {
+      submit.dataset.label = submit.textContent;
+      submit.textContent = "Sending…";
+    } else if (submit.dataset.label) {
+      submit.textContent = submit.dataset.label;
+    }
+    submit.disabled = busy;
+  }
+
+  /* 6a. Enquiry: submit with fetch (AJAX) so the page does not reload.
+     If the form has a data-endpoint (e.g. a Formspree URL) the data is POSTed
+     there; otherwise the request is simulated, as this site has no backend. */
+  function initEnquiryForm() {
+    var form = document.querySelector("form[data-handler='enquiry']");
+    if (!form) return;
+
+    form.addEventListener("kestone:valid", function () {
+      setBusy(form, true);
+      var data = new FormData(form);
+      var endpoint = form.getAttribute("data-endpoint");
+
+      var send = endpoint
+        ? fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } }).then(function (r) {
+            if (!r.ok) throw new Error("Request failed: " + r.status);
+          })
+        : new Promise(function (resolve) {
+            setTimeout(resolve, 700);
+          });
+
+      send
+        .then(function () {
+          var ref = reference();
+          var issue = ISSUES[data.get("issueType")] || ISSUES.other;
+          var how = { email: "email", phone: "a phone call", whatsapp: "WhatsApp" }[data.get("contactMethod")] || "email";
+          showResult(form, function (panel) {
+            panel.innerHTML =
+              '<p class="eyebrow">Request received</p><h2></h2><p class="result-ref"></p>' +
+              "<ul class=\"result-list\"></ul>" +
+              '<div class="result-actions"><a class="btn btn-accent" href="../index.html">Back to homepage</a>' +
+              '<button type="button" class="btn btn-outline" data-again>Send another request</button></div>';
+            panel.querySelector("h2").textContent = "Thanks, " + String(data.get("fullName")).split(" ")[0] + " — we've got your request.";
+            panel.querySelector(".result-ref").textContent = "Reference: " + ref;
+            var list = panel.querySelector(".result-list");
+            var rows = [
+              "Service: " + issue.label,
+              "Indicative cost: " + issue.price,
+              URGENCY[data.get("urgency")] || "",
+              "We'll reply by " + how + (data.get("preferredDate") ? ", aiming for " + data.get("preferredDate") : "") + ".",
+            ];
+            rows.forEach(function (r) {
+              if (!r) return;
+              var li = document.createElement("li");
+              li.textContent = r;
+              list.appendChild(li);
+            });
+          });
+          toast("Request sent — reference " + ref);
+        })
+        .catch(function () {
+          setBusy(form, false);
+          var summary = form.querySelector("[data-form-summary]");
+          if (summary) summary.textContent = "We couldn't send your request. Please try again or call +27 11 000 0000.";
+          toast("Sending failed — please try again.", true);
+        });
+    });
+  }
+
+  /* 6b. Contact: compile the validated fields into an email to the recipient */
+  function initContactForm() {
+    var form = document.querySelector("form[data-handler='contact']");
+    if (!form) return;
+
+    form.addEventListener("kestone:valid", function () {
+      var f = form.elements;
+      var type = f.messageType.options[f.messageType.selectedIndex].text;
+      var subject = "[" + type + "] " + f.subject.value.trim();
+      var body =
+        "Name: " + f.contactName.value.trim() + "\n" +
+        "Email: " + f.contactEmail.value.trim() + "\n" +
+        (f.contactPhone.value.trim() ? "Phone: " + f.contactPhone.value.trim() + "\n" : "") +
+        "Message type: " + type + "\n\n" +
+        f.message.value.trim() + "\n";
+      var href =
+        "mailto:" + CONTACT_RECIPIENT +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+
+      showResult(form, function (panel) {
+        panel.innerHTML =
+          '<p class="eyebrow">Email ready</p><h2>Your message is ready to send</h2>' +
+          '<p class="result-note"></p>' +
+          '<div class="result-actions"><a class="btn btn-accent" data-mailto>Open in my email app</a>' +
+          '<button type="button" class="btn btn-outline" data-again>Write another message</button></div>' +
+          '<p class="form-note">Nothing is sent until you press Send in your email app.</p>';
+        panel.querySelector(".result-note").textContent =
+          "We've compiled your details into an email addressed to " + CONTACT_RECIPIENT + " with the subject “" + subject + "”.";
+        panel.querySelector("[data-mailto]").setAttribute("href", href);
+      });
+      window.location.href = href;
+    });
+  }
+
