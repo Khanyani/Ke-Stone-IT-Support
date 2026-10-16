@@ -124,6 +124,36 @@
   /* ---------- 4. Form validation ---------- */
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
 
+  /* Part 3: extra rules shared by submit-time and blur-time validation.
+     Returns an error message, or "" when the value is acceptable. */
+  var PHONE_RE = /^(\+27|0)[1-9][0-9]{8}$/; /* South African number, e.g. 011 234 5678 or +27 82 123 4567 */
+
+  function extraCheck(control, value) {
+    if (value === "") return "";
+    if (control.type === "tel") {
+      var digits = value.replace(/[\s\-()]/g, "");
+      if (!PHONE_RE.test(digits)) {
+        return "Enter a valid South African phone number, e.g. 082 123 4567 or +27 82 123 4567.";
+      }
+    }
+    if (control.type === "date") {
+      var picked = new Date(value + "T00:00:00");
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      if (isNaN(picked.getTime())) return "Please choose a valid date.";
+      if (picked < today) return "Please choose today or a later date.";
+      if (picked.getDay() === 0) return "We are closed on Sundays — please choose another day.";
+      var limit = new Date(today);
+      limit.setDate(limit.getDate() + 180);
+      if (picked > limit) return "Please choose a date within the next 6 months.";
+    }
+    var min = control.getAttribute("minlength");
+    if (min && control.type !== "date" && value.length < parseInt(min, 10)) {
+      return "Please enter at least " + min + " characters (you have " + value.length + ").";
+    }
+    return "";
+  }
+
   function setError(field, message) {
     field.classList.add("has-error");
     var msg = field.querySelector(".error-msg");
