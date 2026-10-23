@@ -1617,3 +1617,245 @@ form[hidden] { display: none !important; }
   .gallery-item img,
   .open-status .status-dot { transition: none; animation: none; }
 }
+
+/* =========================================================
+   Part 4 additions — repairs page, legal pages, 404, tabs
+   ========================================================= */
+
+/* Numbered process steps */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  counter-reset: step;
+}
+.steps li {
+  position: relative;
+  padding: 1.4rem 1.2rem 1.2rem;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  counter-increment: step;
+}
+.steps li::before {
+  content: "0" counter(step);
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--lime);
+  margin-bottom: 0.5rem;
+}
+.steps h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+}
+.steps p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+/* Tabs */
+.tabs [role="tablist"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.tabs [role="tab"] {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+.tabs [role="tab"]:hover {
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+.tabs [role="tab"][aria-selected="true"] {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--ink);
+}
+.tabs [role="tab"]:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+.tab-panel[hidden] {
+  display: none;
+}
+.tab-panel ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.2rem;
+}
+.tab-panel li {
+  margin-bottom: 0.35rem;
+}
+
+/* Data table (turnaround / diagnostics) */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+  font-size: 0.94rem;
+}
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.data-table th {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lime);
+  background: var(--ink-2);
+}
+.data-table tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Request tracker result */
+.tracker-result {
+  margin-top: 1.2rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--lime);
+  background: var(--ink-2);
+  border-radius: var(--radius);
+}
+.tracker-result.is-error {
+  border-left-color: #ff6b6b;
+}
+.tracker-result p {
+  margin: 0.25rem 0;
+}
+
+/* Legal pages */
+.legal {
+  max-width: 820px;
+}
+.legal h2 {
+  margin-top: 2.4rem;
+  font-size: 1.4rem;
+  scroll-margin-top: 90px;
+}
+.legal h3 {
+  margin-top: 1.4rem;
+  font-size: 1.05rem;
+}
+.legal ul {
+  padding-left: 1.2rem;
+}
+.legal li {
+  margin-bottom: 0.4rem;
+}
+.legal a {
+  color: var(--lime);
+}
+.legal-meta {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.toc {
+  margin: 1.6rem 0 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.toc p {
+  margin: 0 0 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+.toc ol {
+  margin: 0;
+  padding-left: 1.2rem;
+  columns: 2 240px;
+}
+.toc a {
+  color: var(--text);
+  text-decoration: none;
+}
+.toc a:hover {
+  color: var(--lime);
+}
+.legal-note {
+  padding: 1rem 1.2rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+/* 404 page */
+.notfound {
+  text-align: center;
+  padding: 5rem 0 4rem;
+}
+.notfound .code {
+  font-family: var(--mono);
+  font-size: clamp(5rem, 22vw, 11rem);
+  line-height: 1;
+  color: var(--lime);
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+.notfound .code span {
+  color: var(--cyan);
+}
+.notfound .link-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+.notfound-path {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+@media (max-width: 760px) {
+  .toc ol {
+    columns: 1;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
