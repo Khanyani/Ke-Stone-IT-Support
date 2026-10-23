@@ -11,6 +11,7 @@
    6. Form handlers
         6a. Enquiry  -> AJAX-style submit + in-page response
         6b. Contact  -> compiles an email (mailto) to the recipient
+   7. Tabs (repairs)  8. Request tracker (localStorage)  9. 404 helper
    Every feature checks that its markup exists, so this file is
    safe to load on every page.
    ========================================================= */
@@ -618,6 +619,13 @@
       send
         .then(function () {
           var ref = reference();
+          saveRequest({
+            ref: ref,
+            service: (ISSUES[data.get("issueType")] || ISSUES.other).label,
+            urgency: String(data.get("urgency")),
+            name: String(data.get("fullName")).split(" ")[0],
+            date: new Date().toISOString(),
+          });
           var issue = ISSUES[data.get("issueType")] || ISSUES.other;
           var how = { email: "email", phone: "a phone call", whatsapp: "WhatsApp" }[data.get("contactMethod")] || "email";
           showResult(form, function (panel) {
