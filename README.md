@@ -27,14 +27,14 @@ file structure, and the working HTML/CSS/JS website).
 - Growth in newsletter or mailing list sign-ups for maintenance-plan customers.
 
 ## Key Features and Functionality
-**Part 2 (original build)**
+**Part 2**
 - Responsive 5-page website: Home, About Us, Services, Enquiry, and Contact (extended in Part 3 with Repairs, Privacy, Terms and a 404 page, see below).
 - Sticky header navigation with a mobile hamburger menu, skip link and `aria-current` page highlighting.
 - Service cards with indicative pricing, live search + category filter, monthly/yearly pricing switch.
 - Scroll reveal, animated counters, toasts, back-to-top button and scroll-progress bar.
 - Semantic HTML5 (`header`, `nav`, `main`, `section`, `footer`) with a shared stylesheet and script.
 
-**Part 3 (new)**
+**Part 3**
 | Feature | Where | Files |
 |---|---|---|
 | Accordion FAQ (keyboard + ARIA, one answer open at a time) | `services.html` | `features.js`, `style.css` |
@@ -95,11 +95,6 @@ Part 1 consisted of a written Website Project Proposal covering:
 7. Timeline and Milestones
 8. Budget
 9. References
-
-The Part 1 proposal document is included in this repository as
-`ST10489373__ICE_TASK_1_WEDE5020.docx`.
-
-*(Part 2 and Part 3 details are covered in this README and the website files below.)*
 
 ## Sitemap
 ```
