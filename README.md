@@ -28,7 +28,7 @@ file structure, and the working HTML/CSS/JS website).
 
 ## Key Features and Functionality
 **Part 2 (original build)**
-- Responsive 5-page website: Home, About Us, Services, Enquiry, and Contact.
+- Responsive 5-page website: Home, About Us, Services, Enquiry, and Contact (extended in Part 3 with Repairs, Privacy, Terms and a 404 page, see below).
 - Sticky header navigation with a mobile hamburger menu, skip link and `aria-current` page highlighting.
 - Service cards with indicative pricing, live search + category filter, monthly/yearly pricing switch.
 - Scroll reveal, animated counters, toasts, back-to-top button and scroll-progress bar.
@@ -47,6 +47,19 @@ file structure, and the working HTML/CSS/JS website).
 | Enquiry form: new fields (preferred date, service mode radios, consent checkbox), AJAX (`fetch`) submit and in-page response with reference number | `enquiry.html` | `script.js`, `features.js` |
 | Contact form: message type, subject, optional phone; validated data is compiled into an email (`mailto:`) to `hello@kestone-it.co.za` | `contact.html` | `features.js` |
 | SEO: unique titles/descriptions, Open Graph tags, canonical URLs, JSON-LD (`ComputerRepair` and `FAQPage`), `sitemap.xml`, `robots.txt`, favicon, descriptive image names and alt text | all pages | HTML head, root files |
+
+**Additional pages and features (post-Part 3 extension)**
+| Page / feature | File | What it does |
+|---|---|---|
+| Repairs & Diagnostics | `pages/repairs.html` | Six-step repair process, accessible tabbed diagnostics (hardware, software, network, data and security), turnaround and starting-price table, and a request tracker |
+| Request tracker | `repairs.html`, `features.js` | Enquiry references (e.g. `KS-20261022-1234`) are saved in the visitor's browser (`localStorage`) and can be looked up on the Repairs page. The reference format is validated and unknown references get a clear message |
+| Privacy Policy | `pages/privacy.html` | POPIA-based policy: what is collected through each form, purposes, browser storage, third-party maps, retention, security, user rights and the Information Regulator |
+| Terms & Conditions | `pages/terms.html` | Quotes and diagnostics, bookings, backups, remote support, payment, 30-day warranty, device collection, liability and governing law (South Africa) |
+| Custom 404 page | `404.html` | Branded error page with the missing address and links to the main pages. A small script sets `<base href>` so the links work from any depth on GitHub Pages (`/Ke-Stone-IT-Support/`) and on a local server. Marked `noindex` |
+| Navigation and footer | all pages, `script.js` | "Repairs" added to the main menu; footer links to Repairs, Privacy Policy and Terms on every page (including the script fallback markup) |
+| Tabs component | `features.js`, `style.css` | WAI-ARIA tabs with arrow, Home and End key support |
+
+The Privacy Policy and Terms are written in plain language for this project. The warranty period, notice periods and similar figures are draft business rules and should be confirmed by the business owner; they are not legal advice.
 
 ### Form design
 The two forms serve different purposes, as the brief requires:
@@ -93,6 +106,9 @@ The Part 1 proposal document is included in this repository as
 Homepage (index.html)
  |-- About Us (about.html)       — History, mission, vision, founder bio
  |-- Services (services.html)    — Service packages & indicative pricing
+ |-- Repairs (repairs.html)      — Repair process, diagnostics, turnaround, request tracker
+ |-- Privacy Policy (privacy.html), Terms & Conditions (terms.html) — linked from every footer
+ `-- 404.html                    — Shown by the host for any missing address
  |-- Enquiry (enquiry.html)      — Booking / callout request form
  `-- Contact (contact.html)      — Contact details, two location maps, contact form
 ```
@@ -102,6 +118,7 @@ All pages share a common header (logo + navigation menu) and footer (contact inf
 ```
 Ke-Stone-IT-Support/
 |-- index.html
+|-- 404.html
 |-- robots.txt
 |-- sitemap.xml
 |-- README.md
@@ -110,6 +127,9 @@ Ke-Stone-IT-Support/
 |    |-- services.html
 |    |-- enquiry.html
 |    |-- contact.html
+|    |-- repairs.html
+|    |-- privacy.html
+|    |-- terms.html
 |    `-- thank-you.html
 `-- assets/
      |-- css/style.css
@@ -138,6 +158,9 @@ Ke-Stone-IT-Support/
 | Forms | Empty, invalid phone/email, short text, unticked consent, then valid input on both forms | Errors shown beside fields; valid input follows the intended path |
 | Responsive | 375 px width on all pages | No horizontal overflow; menu, map and forms usable |
 | SEO | Titles, descriptions, headings, alt text, sitemap, robots | Present on every page |
+| New pages | Tabs (mouse and arrow keys), tracker with valid, invalid and unknown references, legal page contents tables | Pass |
+| Links | Every internal link on all pages requested and checked | No broken links, one footer per page |
+| 404 | Opened `404.html` and followed its links | Styles, base path and links resolve |
 
 ## Changelog
 | Date / Version | Area | Issue / Feedback | Change Made | Reason / Result |
@@ -153,6 +176,11 @@ Ke-Stone-IT-Support/
 | v3.5 2026-10-15 | Performance | Scripts blocked page rendering | Added `defer` to script tags | Faster first paint |
 | v3.6 2026-10-16 | Map | `fitBounds` was called on a circle not yet on the map, which stopped later features (including the contact form) from starting | Replaced it with `L.latLng().toBounds()` and isolated each feature in `try/catch` | Contact form and map both work |
 | v3.7 2026-10-16 | Docs | README out of date | Updated features, structure, how to run, deployment, testing, references | Lecturer can verify the work |
+| v4.0 2026-10-22 | Site completeness | No custom error page, no legal pages and no page explaining the repair process | Added `404.html`, `privacy.html`, `terms.html` and `repairs.html` | A more complete, trustworthy business website |
+| v4.1 2026-10-22 | Navigation | New pages could not be reached from the menu or footer | Added Repairs to the menu and Repairs, Privacy and Terms to every footer (and the script fallback markup in `script.js`) | Every page is reachable in one click |
+| v4.2 2026-10-22 | Features | Customers had no way to check on a submitted request | Enquiry references are saved to `localStorage` and looked up by a validated tracker on the Repairs page | Customer self-service without a backend |
+| v4.3 2026-10-22 | SEO | New pages not listed for search engines | Added unique titles/descriptions/canonical tags and sitemap entries; 404 is `noindex` | Consistent discoverability |
+| v4.4 2026-10-22 | Docs | README out of date | Documented new pages, structure, changelog and tests | Lecturer can verify the work |
 
 ## References
 Baymard Institute (2025) *E-commerce checkout usability research.* Available at:
@@ -192,6 +220,13 @@ Mozilla Developer Network (2025) *Client-side form validation.* Available at:
 
 OpenStreetMap contributors (2026) *OpenStreetMap.* Available at:
 [https://www.openstreetmap.org/copyright](https://www.openstreetmap.org/copyright) (Accessed: 15 October 2026).
+
+Information Regulator (South Africa) (2026) *Protection of Personal Information Act (POPIA).* Available at:
+[https://inforegulator.org.za/](https://inforegulator.org.za/) (Accessed: 22 October 2026).
+
+GitHub (2026) *Creating a custom 404 page for your GitHub Pages site.* Available at:
+[https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site)
+(Accessed: 22 October 2026).
 
 Schema.org (2026) *LocalBusiness and FAQPage structured data.* Available at:
 [https://schema.org/](https://schema.org/) (Accessed: 15 October 2026).
