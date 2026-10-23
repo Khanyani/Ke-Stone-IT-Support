@@ -696,11 +696,119 @@
     });
   }
 
+
+  /* ---------- 7. Tabs (repairs page) ---------- */
+  function initTabs() {
+    qsa("[data-tabs]").forEach(function (box) {
+      var tabs = qsa("[role='tab']", box);
+      var panels = qsa("[role='tabpanel']", box);
+      tabs.forEach(function (t, i) {
+        t.id = t.id || "tab-" + i;
+        panels[i].setAttribute("aria-labelledby", t.id);
+        t.setAttribute("tabindex", t.getAttribute("aria-selected") === "true" ? "0" : "-1");
+      });
+      function select(i, focus) {
+        tabs.forEach(function (t, j) {
+          var on = i === j;
+          t.setAttribute("aria-selected", on ? "true" : "false");
+          t.setAttribute("tabindex", on ? "0" : "-1");
+          panels[j].hidden = !on;
+        });
+        if (focus) tabs[i].focus();
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener("click", function () {
+          select(i, false);
+        });
+        t.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") { e.preventDefault(); select((i + 1) % tabs.length, true); }
+          else if (e.key === "ArrowLeft") { e.preventDefault(); select((i - 1 + tabs.length) % tabs.length, true); }
+          else if (e.key === "Home") { e.preventDefault(); select(0, true); }
+          else if (e.key === "End") { e.preventDefault(); select(tabs.length - 1, true); }
+        });
+      });
+    });
+  }
+
+  /* ---------- 8. Request tracker (browser storage only) ---------- */
+  var STORE_KEY = "kestone.requests";
+
+  function readRequests() {
+    try {
+      return JSON.parse(localStorage.getItem(STORE_KEY) || "[]");
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveRequest(rec) {
+    try {
+      var all = readRequests();
+      all.push(rec);
+      localStorage.setItem(STORE_KEY, JSON.stringify(all.slice(-20)));
+    } catch (e) {
+      /* storage unavailable (private mode): the tracker simply won't find it */
+    }
+  }
+
+  function initTracker() {
+    var form = document.querySelector("form[data-tracker]");
+    if (!form) return;
+    var out = form.querySelector("[data-tracker-result]");
+    var field = form.querySelector(".field");
+    var input = form.elements.trackRef;
+
+    form.setAttribute("novalidate", "novalidate");
+    input.addEventListener("input", function () {
+      window.KeStone.clearError(field);
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      out.innerHTML = "";
+      var ref = input.value.trim().toUpperCase();
+      if (!/^KS-\d{8}-\d{4}$/.test(ref)) {
+        window.KeStone.setError(field, "Enter a reference like KS-20261022-1234.");
+        input.focus();
+        return;
+      }
+      window.KeStone.clearError(field);
+      var rec = readRequests().filter(function (r) {
+        return r.ref === ref;
+      })[0];
+      var box = document.createElement("div");
+      box.className = "tracker-result" + (rec ? "" : " is-error");
+      if (rec) {
+        var when = new Date(rec.date).toLocaleDateString("en-ZA", { day: "numeric", month: "long", year: "numeric" });
+        [["Reference", rec.ref], ["Service", rec.service], ["Sent", when], ["Status", "Received — we will reply within 24 hours"]].forEach(function (row) {
+          var p = document.createElement("p");
+          var b = document.createElement("strong");
+          b.textContent = row[0] + ": ";
+          p.appendChild(b);
+          p.appendChild(document.createTextNode(row[1]));
+          box.appendChild(p);
+        });
+      } else {
+        var p = document.createElement("p");
+        p.textContent = "We couldn't find that reference in this browser. Check the number, or call +27 11 000 0000.";
+        box.appendChild(p);
+      }
+      out.appendChild(box);
+    });
+  }
+
+  /* ---------- 9. 404 page: show the address that was not found ---------- */
+  function initNotFound() {
+    var el = document.querySelector("[data-missing-path]");
+    if (el) el.textContent = "Not found: " + window.location.pathname;
+  }
+
   /* ---------- Boot ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     /* Each feature is isolated so one failure cannot stop the others */
     [initAccordion, initLightbox, initMap, initSort, initOpenStatus, initTips,
-      initDateLimits, initEstimate, initEnquiryForm, initContactForm].forEach(function (fn) {
+      initDateLimits, initEstimate, initEnquiryForm, initContactForm, initTabs, initTracker,
+      initNotFound].forEach(function (fn) {
       try {
         fn();
       } catch (err) {
