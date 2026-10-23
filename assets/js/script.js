@@ -36,6 +36,7 @@
       '<li><a href="{{root}}index.html" data-nav="home">Home</a></li>' +
       '<li><a href="{{root}}pages/about.html" data-nav="about">About Us</a></li>' +
       '<li><a href="{{root}}pages/services.html" data-nav="services">Services</a></li>' +
+      '<li><a href="{{root}}pages/repairs.html" data-nav="repairs">Repairs</a></li>' +
       '<li><a href="{{root}}pages/contact.html" data-nav="contact">Contact</a></li>' +
       '<li><a class="btn btn-accent btn-sm" href="{{root}}pages/enquiry.html" data-nav="enquiry">Request Support</a></li>' +
       "</ul></nav></div></header>",
@@ -49,7 +50,10 @@
       '<div><h2 class="footer-heading">Quick links</h2><ul class="footer-list">' +
       '<li><a href="{{root}}pages/services.html">Services</a></li>' +
       '<li><a href="{{root}}pages/about.html">About Us</a></li>' +
-      '<li><a href="{{root}}pages/enquiry.html">Request Support</a></li></ul></div>' +
+      '<li><a href="{{root}}pages/enquiry.html">Request Support</a></li>' +
+      '<li><a href="{{root}}pages/repairs.html">Repairs &amp; Diagnostics</a></li>' +
+      '<li><a href="{{root}}pages/privacy.html">Privacy Policy</a></li>' +
+      '<li><a href="{{root}}pages/terms.html">Terms &amp; Conditions</a></li></ul></div>' +
       '<div><h2 class="footer-heading">Follow us</h2><ul class="footer-list footer-social">' +
       '<li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>' +
       '<li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>' +
