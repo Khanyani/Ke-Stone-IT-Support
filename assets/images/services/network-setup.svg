@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Router, switch and laptop connected by cables and Wi-Fi signal arcs">
+<title>Router, switch and laptop connected by cables and Wi-Fi signal arcs</title>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a222c"/><stop offset="1" stop-color="#0c1015"/></linearGradient></defs>
+<rect width="800" height="500" fill="url(#g)"/>
+<g stroke="#ffffff" stroke-opacity=".05"><path d="M0 0V500"/><path d="M50 0V500"/><path d="M100 0V500"/><path d="M150 0V500"/><path d="M200 0V500"/><path d="M250 0V500"/><path d="M300 0V500"/><path d="M350 0V500"/><path d="M400 0V500"/><path d="M450 0V500"/><path d="M500 0V500"/><path d="M550 0V500"/><path d="M600 0V500"/><path d="M650 0V500"/><path d="M700 0V500"/><path d="M750 0V500"/><path d="M0 0H800"/><path d="M0 50H800"/><path d="M0 100H800"/><path d="M0 150H800"/><path d="M0 200H800"/><path d="M0 250H800"/><path d="M0 300H800"/><path d="M0 350H800"/><path d="M0 400H800"/><path d="M0 450H800"/></g>
+<circle cx="640" cy="90" r="120" fill="#c9f24d" fill-opacity=".05"/>
+
+<rect x="300" y="300" width="200" height="60" rx="10" fill="#1a222c" stroke="#c9f24d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="340" cy="330" r="7" fill="#c9f24d"/><circle cx="368" cy="330" r="7" fill="#55e6d0"/><circle cx="396" cy="330" r="7" fill="#55e6d0"/>
+<path d="M330 300l-22-70M470 300l22-70" stroke="#e7ecf1" stroke-width="9" stroke-linecap="round"/>
+<g fill="none" stroke="#c9f24d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M350 200a70 70 0 0 1 100 0"/><path d="M320 165a115 115 0 0 1 160 0" stroke-opacity=".6"/><path d="M290 130a160 160 0 0 1 220 0" stroke-opacity=".3"/></g>
+<rect x="80" y="380" width="170" height="85" rx="8" fill="#1a222c" stroke="#55e6d0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><rect x="560" y="380" width="170" height="85" rx="8" fill="#1a222c" stroke="#55e6d0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M300 345H200v35M500 345h100v35" fill="none" stroke="#55e6d0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
