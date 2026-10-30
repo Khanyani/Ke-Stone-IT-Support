@@ -1028,7 +1028,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     /* Each feature is isolated so one failure cannot stop the others */
     [initAccordion, initLightbox, initMap, initSort, initOpenStatus, initTips,
-      initDateLimits, initEstimate, initEnquiryForm, initContactForm, initTabs, initTracker,
+      initDateLimits, initEstimate, initEnquiryForm, initContactForm, initTabs, initTracker, initSearch,
       initNotFound].forEach(function (fn) {
       try {
         fn();
