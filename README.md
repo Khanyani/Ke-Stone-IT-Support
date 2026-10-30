@@ -144,7 +144,8 @@ Ke-Stone-IT-Support/
      |-- js/script.js        (shared behaviour + form validation)
      |-- js/features.js      (Part 3 features)
      |-- data/tips.json      (dynamic content)
-     |-- images/             (favicon + gallery/ illustrations)
+     |-- data/search-index.js (generated search index)
+     |-- images/             (favicon, gallery/ and services/ illustrations)
      `-- vendor/leaflet/     (Leaflet 1.9.4, BSD-2 licence)
 ```
 
