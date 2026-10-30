@@ -203,6 +203,8 @@ python3 tools/build_search_index.py
 | v5.2 2026-10-30 | Docs | README out of date | Documented the new services, branch, tests and keywords | Lecturer can verify the work |
 | v5.3 2026-10-30 | Social media | Only Facebook, LinkedIn and WhatsApp were linked | Added Instagram, X, TikTok and YouTube to the footer on every page and in the script fallback; made the fallback footer's social list wrap so it does not overflow | Wider social reach and consistent branding |
 | v5.4 2026-10-30 | Services | Service cards were not interactive | Made each service card a link to the enquiry form (`?service=` parameter) and pre-selected the service there | Fewer clicks from interest to request |
+| v5.5 2026-10-30 | Services | Services had no pictures | Added a picture to every service card (SVG illustrations in `assets/images/services/`) that opens in the lightbox; the lightbox now follows the active filter | Visual, easier to scan services |
+| v5.6 2026-10-30 | Navigation | No way to search the site | Added `search.html`, a generated search index, a build script, a menu icon, footer link and 404 search box; service cards get `id`s so results link to the exact card | Visitors find services, prices and policies quickly |
 
 ## References
 Baymard Institute (2025) *E-commerce checkout usability research.* Available at:
