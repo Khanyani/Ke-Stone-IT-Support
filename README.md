@@ -137,6 +137,7 @@ Ke-Stone-IT-Support/
 |    |-- repairs.html
 |    |-- privacy.html
 |    |-- terms.html
+|    |-- search.html
 |    `-- thank-you.html
 `-- assets/
      |-- css/style.css
