@@ -161,6 +161,7 @@ Ke-Stone-IT-Support/
 | Responsive | 375 px width on all pages | No horizontal overflow; menu, map and forms usable |
 | SEO | Titles, descriptions, headings, alt text, sitemap, robots | Present on every page |
 | New pages | Tabs (mouse and arrow keys), tracker with valid, invalid and unknown references, legal page contents tables | Pass |
+| New services and branch | Filter chips, search and sort over 11 services; enquiry estimate for each new service; map marker, popup and both-regions view for Gqeberha; 375 px width on all pages | Pass |
 | Links | Every internal link on all pages requested and checked | No broken links, one footer per page |
 | 404 | Opened `404.html` and followed its links | Styles, base path and links resolve |
 
