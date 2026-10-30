@@ -176,6 +176,7 @@ python3 tools/build_search_index.py
 | New pages | Tabs (mouse and arrow keys), tracker with valid, invalid and unknown references, legal page contents tables | Pass |
 | New services and branch | Filter chips, search and sort over 11 services; enquiry estimate for each new service; map marker, popup and both-regions view for Gqeberha; 375 px width on all pages | Pass |
 | Links | Every internal link on all pages requested and checked | No broken links, one footer per page |
+| Pictures and search | All 11 pictures load; picture click opens the viewer (also on Home and with a filter active); searches for backup, print, price, Gqeberha, warranty, no-result and one-letter input; filters; `?q=` links; result links land on the right card; HTML typed into the box stays plain text | Pass |
 | 404 | Opened `404.html` and followed its links | Styles, base path and links resolve |
 
 ## Changelog
