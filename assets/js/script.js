@@ -38,6 +38,7 @@
       '<li><a href="{{root}}pages/services.html" data-nav="services">Services</a></li>' +
       '<li><a href="{{root}}pages/repairs.html" data-nav="repairs">Repairs</a></li>' +
       '<li><a href="{{root}}pages/contact.html" data-nav="contact">Contact</a></li>' +
+      '<li><a class="nav-search" href="{{root}}pages/search.html" data-nav="search" aria-label="Search the site"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span class="nav-search-text">Search</span></a></li>' +
       '<li><a class="btn btn-accent btn-sm" href="{{root}}pages/enquiry.html" data-nav="enquiry">Request Support</a></li>' +
       "</ul></nav></div></header>",
     footer:
@@ -53,7 +54,8 @@
       '<li><a href="{{root}}pages/enquiry.html">Request Support</a></li>' +
       '<li><a href="{{root}}pages/repairs.html">Repairs &amp; Diagnostics</a></li>' +
       '<li><a href="{{root}}pages/privacy.html">Privacy Policy</a></li>' +
-      '<li><a href="{{root}}pages/terms.html">Terms &amp; Conditions</a></li></ul></div>' +
+      '<li><a href="{{root}}pages/terms.html">Terms &amp; Conditions</a></li>' +
+      '<li><a href="{{root}}pages/search.html">Search the site</a></li></ul></div>' +
       '<div><h2 class="footer-heading">Follow us</h2><ul class="footer-list footer-social">' +
       '<li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>' +
       '<li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>' +
