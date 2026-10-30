@@ -60,6 +60,7 @@ file structure, and the working HTML/CSS/JS website).
 | Six new services | `pages/services.html`, `enquiry.html`, `repairs.html` | Data Backup & Recovery (from R550), Printer & Peripheral Setup (from R350), Email & Microsoft 365 Setup (from R500), Software Installation & Upgrades (from R300), Hardware Upgrades & Custom PC Builds (from R600 labour), CCTV & Smart Home Setup (from R1200). The Services grid now has 11 services, extra filter chips (Backup, Setup, Upgrades), the enquiry form lists them with live estimates, and the Repairs table has two new rows |
 | Gqeberha (Port Elizabeth) branch | `pages/contact.html`, `features.js` | Third location at 27 Cape Road, Newton Park, Gqeberha (Port Elizabeth): its own address card and Google map, a marker and 20 km service-area circle on the interactive map, a "Gqeberha Branch" button, plus "Gauteng area" and "Show both regions" buttons. Footer, structured data (`areaServed`), FAQ and Privacy Policy mention it |
 | More social platforms | all pages, `script.js` | The footer "Follow us" list now links to Facebook, LinkedIn, WhatsApp, Instagram, X, TikTok and YouTube. The links point to each platform's home page until the business creates real profiles |
+| Clickable services | `index.html`, `pages/services.html`, `features.js`, `style.css` | Every service card (4 on Home, 11 on Services) is a link: clicking anywhere on the card opens the enquiry form with that service already selected and its estimate shown (`enquiry.html?service=backup`). Keyboard users get a visible focus outline |
 | Tabs component | `features.js`, `style.css` | WAI-ARIA tabs with arrow, Home and End key support |
 
 The Privacy Policy and Terms are written in plain language for this project. The warranty period, notice periods and similar figures are draft business rules and should be confirmed by the business owner; they are not legal advice.
@@ -189,6 +190,7 @@ Ke-Stone-IT-Support/
 | v5.1 2026-10-30 | Locations | Business appeared to serve Johannesburg only | Added a Gqeberha (Port Elizabeth) branch: contact card with Google map, Leaflet marker and service-area circle, region buttons; updated footer, FAQ, JSON-LD and Privacy Policy | Covers the Eastern Cape; improves local SEO |
 | v5.2 2026-10-30 | Docs | README out of date | Documented the new services, branch, tests and keywords | Lecturer can verify the work |
 | v5.3 2026-10-30 | Social media | Only Facebook, LinkedIn and WhatsApp were linked | Added Instagram, X, TikTok and YouTube to the footer on every page and in the script fallback; made the fallback footer's social list wrap so it does not overflow | Wider social reach and consistent branding |
+| v5.4 2026-10-30 | Services | Service cards were not interactive | Made each service card a link to the enquiry form (`?service=` parameter) and pre-selected the service there | Fewer clicks from interest to request |
 
 ## References
 Baymard Institute (2025) *E-commerce checkout usability research.* Available at:
