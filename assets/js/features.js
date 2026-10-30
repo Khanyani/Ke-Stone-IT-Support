@@ -844,6 +844,186 @@
     if (el) el.textContent = "Not found: " + window.location.pathname;
   }
 
+
+  /* ---------- 10. Site search (client-side, uses assets/data/search-index.js) ---------- */
+  function initSearch() {
+    var form = document.querySelector("[data-site-search]");
+    if (!form) return;
+    var input = form.elements.q;
+    var list = document.querySelector("[data-search-results]");
+    var count = document.querySelector("[data-search-count]");
+    var filters = qsa("[data-search-filters] .chip");
+    var index = window.KESTONE_SEARCH || [];
+    var kind = "all";
+    var KIND_LABEL = { service: "Service", faq: "FAQ", page: "Page", legal: "Policy" };
+
+    function terms(q) {
+      return q.toLowerCase().split(/[^a-z0-9&+']+/).filter(function (t) {
+        return t.length > 1;
+      });
+    }
+
+    function wordHit(haystack, term) {
+      /* prefix match on word starts, so "print" finds "printer" */
+      return new RegExp("(^|[^a-z0-9])" + term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).test(haystack);
+    }
+
+    function score(entry, ts) {
+      var title = entry.t.toLowerCase();
+      var body = (entry.x || "").toLowerCase();
+      var label = (entry.p || "").toLowerCase();
+      var total = 0;
+      for (var i = 0; i < ts.length; i++) {
+        var t = ts[i];
+        var s = 0;
+        if (wordHit(title, t)) s += 6;
+        if (wordHit(label, t)) s += 3;
+        if (wordHit(body, t)) s += 2;
+        if (!s) return 0; /* every word must match somewhere */
+        total += s;
+      }
+      if (entry.k === "service") total += 2; /* services first when scores tie */
+      return total;
+    }
+
+    function highlight(el, text, ts) {
+      el.textContent = "";
+      if (!ts.length) {
+        el.textContent = text;
+        return;
+      }
+      var re = new RegExp("(^|[^a-z0-9])(" + ts.map(function (t) {
+        return t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }).join("|") + ")", "ig");
+      var last = 0;
+      var m;
+      while ((m = re.exec(text))) {
+        var start = m.index + m[1].length;
+        if (start > last) el.appendChild(document.createTextNode(text.slice(last, start)));
+        var mark = document.createElement("mark");
+        mark.textContent = m[2];
+        el.appendChild(mark);
+        last = start + m[2].length;
+        if (m[0].length === 0) re.lastIndex++;
+      }
+      if (last < text.length) el.appendChild(document.createTextNode(text.slice(last)));
+    }
+
+    function snippet(text, ts) {
+      if (text.length <= 170) return text;
+      var low = text.toLowerCase();
+      var pos = -1;
+      for (var i = 0; i < ts.length && pos < 0; i++) pos = low.indexOf(ts[i]);
+      var start = Math.max(0, pos - 50);
+      var out = text.slice(start, start + 170);
+      return (start > 0 ? "… " : "") + out + (start + 170 < text.length ? " …" : "");
+    }
+
+    function render() {
+      var q = input.value.trim();
+      var ts = terms(q);
+      list.innerHTML = "";
+      if (!ts.length) {
+        count.textContent = q ? "Please type at least two letters." : "Start typing to search " + index.length + " items across the website.";
+        return;
+      }
+      var hits = index
+        .map(function (e) {
+          return { e: e, s: score(e, ts) };
+        })
+        .filter(function (h) {
+          return h.s > 0 && (kind === "all" || h.e.k === kind);
+        })
+        .sort(function (a, b) {
+          return b.s - a.s;
+        })
+        .slice(0, 30);
+
+      count.textContent = hits.length
+        ? hits.length + (hits.length === 1 ? " result" : " results") + " for \u201c" + q + "\u201d"
+        : "No results for \u201c" + q + "\u201d. Try a shorter word such as \u201cbackup\u201d, \u201cprice\u201d or \u201crepair\u201d, or ";
+
+      if (!hits.length) {
+        var a = document.createElement("a");
+        a.href = "contact.html";
+        a.textContent = "contact us";
+        count.appendChild(a);
+        count.appendChild(document.createTextNode("."));
+      }
+
+      hits.forEach(function (h) {
+        var li = document.createElement("li");
+        li.className = "search-result";
+        var badge = document.createElement("span");
+        badge.className = "search-badge badge-" + h.e.k;
+        badge.textContent = KIND_LABEL[h.e.k] || "Page";
+        var title = document.createElement("a");
+        title.className = "search-title";
+        title.href = h.e.u.indexOf("pages/") === 0 ? h.e.u.slice(6) : "../" + h.e.u;
+        highlight(title, h.e.t, ts);
+        var where = document.createElement("span");
+        where.className = "search-where";
+        where.textContent = h.e.p;
+        var text = document.createElement("p");
+        highlight(text, snippet(h.e.x || "", ts), ts);
+        var head = document.createElement("div");
+        head.className = "search-head";
+        head.appendChild(badge);
+        head.appendChild(title);
+        head.appendChild(where);
+        li.appendChild(head);
+        li.appendChild(text);
+        list.appendChild(li);
+      });
+    }
+
+    function sync(replace) {
+      try {
+        var url = new URL(window.location.href);
+        if (input.value.trim()) url.searchParams.set("q", input.value.trim());
+        else url.searchParams.delete("q");
+        window.history[replace ? "replaceState" : "pushState"](null, "", url);
+      } catch (e) {}
+    }
+
+    var timer;
+    input.addEventListener("input", function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        render();
+        sync(true);
+      }, 120);
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      render();
+      sync(false);
+    });
+    filters.forEach(function (c) {
+      c.addEventListener("click", function () {
+        filters.forEach(function (o) {
+          o.classList.toggle("is-active", o === c);
+        });
+        kind = c.getAttribute("data-kind");
+        render();
+      });
+    });
+    qsa("[data-search-suggest] .chip").forEach(function (c) {
+      c.addEventListener("click", function () {
+        input.value = c.getAttribute("data-q");
+        render();
+        sync(false);
+        input.focus();
+      });
+    });
+
+    try {
+      var initial = new URLSearchParams(window.location.search).get("q");
+      if (initial) input.value = initial.slice(0, 80);
+    } catch (e) {}
+    render();
+  }
+
   /* ---------- Boot ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     /* Each feature is isolated so one failure cannot stop the others */
