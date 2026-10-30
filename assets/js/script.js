@@ -58,6 +58,10 @@
       '<li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>' +
       '<li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>' +
       '<li><a href="https://wa.me/27110000000" rel="noopener">WhatsApp</a></li>' +
+      '<li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>' +
+      '<li><a href="https://x.com/" rel="noopener">X (Twitter)</a></li>' +
+      '<li><a href="https://www.tiktok.com/" rel="noopener">TikTok</a></li>' +
+      '<li><a href="https://www.youtube.com/" rel="noopener">YouTube</a></li>' +
       "</ul></div></div>" +
       '<div class="footer-bottom"><p>&copy; <span data-year>2026</span> Ke\'Stone IT Support. All rights reserved.</p></div></footer>',
   };
