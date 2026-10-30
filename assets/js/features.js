@@ -296,7 +296,22 @@
           o.btn.classList.remove("is-active");
           o.btn.setAttribute("aria-pressed", "false");
         });
-        map.flyToBounds(L.latLng(places[0].lat, places[0].lng).toBounds(40000), { padding: [10, 10] });
+        map.flyToBounds(home, { padding: [10, 10] });
+      });
+    }
+
+    var all = document.querySelector("[data-map-all]");
+    if (all) {
+      all.addEventListener("click", function () {
+        map.closePopup();
+        places.forEach(function (o) {
+          o.btn.classList.remove("is-active");
+          o.btn.setAttribute("aria-pressed", "false");
+        });
+        map.flyToBounds(
+          L.latLngBounds(places.map(function (o) { return [o.lat, o.lng]; })),
+          { padding: [40, 40], duration: 1.2 }
+        );
       });
     }
   }
