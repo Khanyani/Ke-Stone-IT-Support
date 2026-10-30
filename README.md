@@ -34,7 +34,7 @@ file structure, and the working HTML/CSS/JS website).
 - Scroll reveal, animated counters, toasts, back-to-top button and scroll-progress bar.
 - Semantic HTML5 (`header`, `nav`, `main`, `section`, `footer`) with a shared stylesheet and script.
 
-**Part 3**
+**Part 3 (new)**
 | Feature | Where | Files |
 |---|---|---|
 | Accordion FAQ (keyboard + ARIA, one answer open at a time) | `services.html` | `features.js`, `style.css` |
