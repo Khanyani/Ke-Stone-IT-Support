@@ -184,6 +184,9 @@ Ke-Stone-IT-Support/
 | v4.2 2026-10-22 | Features | Customers had no way to check on a submitted request | Enquiry references are saved to `localStorage` and looked up by a validated tracker on the Repairs page | Customer self-service without a backend |
 | v4.3 2026-10-22 | SEO | New pages not listed for search engines | Added unique titles/descriptions/canonical tags and sitemap entries; 404 is `noindex` | Consistent discoverability |
 | v4.4 2026-10-22 | Docs | README out of date | Documented new pages, structure, changelog and tests | Lecturer can verify the work |
+| v5.0 2026-10-30 | Services | Only 5 services and pricing options were listed | Added six services with starting prices to the Services page, the enquiry form and its live estimate, and two rows on the Repairs table; added Backup, Setup and Upgrades filter chips | Wider offering, clearer pricing |
+| v5.1 2026-10-30 | Locations | Business appeared to serve Johannesburg only | Added a Gqeberha (Port Elizabeth) branch: contact card with Google map, Leaflet marker and service-area circle, region buttons; updated footer, FAQ, JSON-LD and Privacy Policy | Covers the Eastern Cape; improves local SEO |
+| v5.2 2026-10-30 | Docs | README out of date | Documented the new services, branch, tests and keywords | Lecturer can verify the work |
 
 ## References
 Baymard Institute (2025) *E-commerce checkout usability research.* Available at:
