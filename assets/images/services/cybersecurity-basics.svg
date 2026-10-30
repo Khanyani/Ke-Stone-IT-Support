@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Shield with a padlock and a password field showing protected login">
+<title>Shield with a padlock and a password field showing protected login</title>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a222c"/><stop offset="1" stop-color="#0c1015"/></linearGradient></defs>
+<rect width="800" height="500" fill="url(#g)"/>
+<g stroke="#ffffff" stroke-opacity=".05"><path d="M0 0V500"/><path d="M50 0V500"/><path d="M100 0V500"/><path d="M150 0V500"/><path d="M200 0V500"/><path d="M250 0V500"/><path d="M300 0V500"/><path d="M350 0V500"/><path d="M400 0V500"/><path d="M450 0V500"/><path d="M500 0V500"/><path d="M550 0V500"/><path d="M600 0V500"/><path d="M650 0V500"/><path d="M700 0V500"/><path d="M750 0V500"/><path d="M0 0H800"/><path d="M0 50H800"/><path d="M0 100H800"/><path d="M0 150H800"/><path d="M0 200H800"/><path d="M0 250H800"/><path d="M0 300H800"/><path d="M0 350H800"/><path d="M0 400H800"/><path d="M0 450H800"/></g>
+<circle cx="640" cy="90" r="120" fill="#c9f24d" fill-opacity=".05"/>
+
+<path d="M400 50l170 60v130c0 100-76 170-170 205-94-35-170-105-170-205V110z" fill="#1a222c" stroke="#c9f24d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="335" y="215" width="130" height="105" rx="12" fill="#c9f24d"/><path d="M362 215v-32a38 38 0 0 1 76 0v32" fill="none" stroke="#c9f24d" stroke-width="16"/>
+<circle cx="400" cy="262" r="13" fill="#0c1015"/><path d="M400 270v26" stroke="#0c1015" stroke-width="9" stroke-linecap="round"/>
+<rect x="590" y="330" width="170" height="44" rx="6" fill="#1a222c" stroke="#55e6d0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M610 352h8m14 0h8m14 0h8m14 0h8" stroke="#e7ecf1" stroke-width="7" stroke-linecap="round"/>
+</svg>
