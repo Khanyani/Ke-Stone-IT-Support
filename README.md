@@ -149,6 +149,12 @@ Ke-Stone-IT-Support/
      `-- vendor/leaflet/     (Leaflet 1.9.4, BSD-2 licence)
 ```
 
+## Updating the search index
+The search page reads `assets/data/search-index.js`, which is generated from the HTML pages. After you change page text, services or prices, run this from the project folder and commit the result:
+```
+python3 tools/build_search_index.py
+```
+
 ## How to Run
 1. Download or clone the repository: `git clone https://github.com/Khanyani/Ke-Stone-IT-Support.git`
 2. Open `index.html` in a browser. For full behaviour (the IT-tips JSON is fetched), serve the folder with a local server instead, e.g. `python -m http.server 8000` and visit `http://localhost:8000/`, or use the VS Code Live Server extension.
