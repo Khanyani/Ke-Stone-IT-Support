@@ -42,7 +42,7 @@
       "</ul></nav></div></header>",
     footer:
       '<footer class="site-footer"><div class="container footer-grid">' +
-      '<div><h2 class="footer-heading">Ke\'Stone IT Support</h2><p class="footer-text">Friendly, affordable IT support for small businesses and home users across Johannesburg.</p></div>' +
+      '<div><h2 class="footer-heading">Ke\'Stone IT Support</h2><p class="footer-text">Friendly, affordable IT support for small businesses and home users across Johannesburg and Gqeberha.</p></div>' +
       '<div><h2 class="footer-heading">Contact</h2><ul class="footer-list">' +
       '<li><a href="tel:+27110000000">+27 11 000 0000</a></li>' +
       '<li><a href="mailto:hello@kestone-it.co.za">hello@kestone-it.co.za</a></li>' +
@@ -434,6 +434,9 @@
       '<button type="button" class="chip" data-filter="network">Networks</button>' +
       '<button type="button" class="chip" data-filter="secur">Security</button>' +
       '<button type="button" class="chip" data-filter="remote">Remote</button>' +
+      '<button type="button" class="chip" data-filter="backup">Backup</button>' +
+      '<button type="button" class="chip" data-filter="setup">Setup</button>' +
+      '<button type="button" class="chip" data-filter="upgrade">Upgrades</button>' +
       '<p class="filter-count" aria-live="polite"></p>';
     grid.parentNode.insertBefore(bar, grid);
 
