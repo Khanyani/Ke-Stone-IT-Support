@@ -261,18 +261,24 @@
       });
     });
 
-    /* Service area: call-outs within roughly 20 km of the Sandton office */
-    L.circle([places[0].lat, places[0].lng], {
-      radius: 20000,
-      color: "#a9d130",
-      weight: 2,
-      fillColor: "#c9f24d",
-      fillOpacity: 0.08,
-    })
-      .addTo(map)
-      .bindTooltip("Call-out service area (about 20 km)", { sticky: true });
+    /* Service areas: call-outs within roughly 20 km of each place marked data-area-km */
+    places.forEach(function (p) {
+      var km = parseFloat(p.btn.getAttribute("data-area-km"));
+      if (!km) return;
+      L.circle([p.lat, p.lng], {
+        radius: km * 1000,
+        color: "#a9d130",
+        weight: 2,
+        fillColor: "#c9f24d",
+        fillOpacity: 0.08,
+      })
+        .addTo(map)
+        .bindTooltip("Call-out service area around " + p.name + " (about " + km + " km)", { sticky: true });
+    });
 
-    map.fitBounds(L.latLng(places[0].lat, places[0].lng).toBounds(40000), { padding: [10, 10] });
+    /* Start on the first region (Gauteng); the buttons below move to the others */
+    var home = L.latLng(places[0].lat, places[0].lng).toBounds(40000);
+    map.fitBounds(home, { padding: [10, 10] });
 
     /* Scroll-wheel zoom only after the visitor clicks the map, so the page can still scroll */
     map.on("focus click", function () {
