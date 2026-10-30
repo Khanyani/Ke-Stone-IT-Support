@@ -130,3 +130,53 @@
     </header>
 
 
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main id="main">
+
+      <section class="hero">
+        <div class="container">
+          <p class="eyebrow">Site search</p>
+          <h1>Search our services, prices and help pages</h1>
+          <p class="lead">
+            Type what you need, such as "backup", "printer", "price" or "Gqeberha", and we will
+            show the matching services, pages and answers.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <form class="site-search" role="search" action="search.html" method="get" data-site-search>
+            <label for="siteSearchInput" class="sr-only">Search the website</label>
+            <input type="search" id="siteSearchInput" name="q" placeholder="Search, e.g. wi-fi, backup, CCTV, warranty" autocomplete="off" maxlength="80" />
+            <button class="btn btn-accent" type="submit">Search</button>
+          </form>
+
+          <div class="search-suggest" data-search-suggest aria-label="Popular searches">
+            <span class="search-suggest-label">Try:</span>
+            <button type="button" class="chip" data-q="backup">backup</button>
+            <button type="button" class="chip" data-q="printer">printer</button>
+            <button type="button" class="chip" data-q="price">price</button>
+            <button type="button" class="chip" data-q="Gqeberha">Gqeberha</button>
+            <button type="button" class="chip" data-q="warranty">warranty</button>
+            <button type="button" class="chip" data-q="privacy">privacy</button>
+          </div>
+
+          <div class="filter-bar search-filters" role="group" aria-label="Filter results" data-search-filters>
+            <button type="button" class="chip is-active" data-kind="all">All</button>
+            <button type="button" class="chip" data-kind="service">Services</button>
+            <button type="button" class="chip" data-kind="page">Pages</button>
+            <button type="button" class="chip" data-kind="faq">FAQs</button>
+            <button type="button" class="chip" data-kind="legal">Policies</button>
+          </div>
+
+          <p class="filter-count" data-search-count aria-live="polite"></p>
+          <ol class="search-results" data-search-results></ol>
+          <noscript><p>Search needs JavaScript. Use the menu to browse the website instead.</p></noscript>
+        </div>
+      </section>
+
+    </main>
+
+
