@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Envelope with an at-sign over three devices sharing one mailbox">
+<title>Envelope with an at-sign over three devices sharing one mailbox</title>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a222c"/><stop offset="1" stop-color="#0c1015"/></linearGradient></defs>
+<rect width="800" height="500" fill="url(#g)"/>
+<g stroke="#ffffff" stroke-opacity=".05"><path d="M0 0V500"/><path d="M50 0V500"/><path d="M100 0V500"/><path d="M150 0V500"/><path d="M200 0V500"/><path d="M250 0V500"/><path d="M300 0V500"/><path d="M350 0V500"/><path d="M400 0V500"/><path d="M450 0V500"/><path d="M500 0V500"/><path d="M550 0V500"/><path d="M600 0V500"/><path d="M650 0V500"/><path d="M700 0V500"/><path d="M750 0V500"/><path d="M0 0H800"/><path d="M0 50H800"/><path d="M0 100H800"/><path d="M0 150H800"/><path d="M0 200H800"/><path d="M0 250H800"/><path d="M0 300H800"/><path d="M0 350H800"/><path d="M0 400H800"/><path d="M0 450H800"/></g>
+<circle cx="640" cy="90" r="120" fill="#c9f24d" fill-opacity=".05"/>
+
+<rect x="210" y="110" width="380" height="250" rx="16" fill="#1a222c" stroke="#c9f24d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M210 135l190 130 190-130" fill="none" stroke="#c9f24d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="400" cy="300" r="32" fill="none" stroke="#55e6d0" stroke-width="7"/><circle cx="400" cy="300" r="12" fill="none" stroke="#55e6d0" stroke-width="7"/><path d="M412 300v-8a24 24 0 0 1 24 -2" fill="none" stroke="#55e6d0" stroke-width="7" stroke-linecap="round"/>
+<rect x="90" y="395" width="140" height="70" rx="8" fill="#1a222c" stroke="#55e6d0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><rect x="330" y="395" width="140" height="70" rx="8" fill="#1a222c" stroke="#55e6d0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><rect x="570" y="395" width="140" height="70" rx="8" fill="#1a222c" stroke="#55e6d0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M160 395v-30M400 395v-35M640 395v-30" stroke="#c9f24d" stroke-width="5" stroke-dasharray="3 9" stroke-linecap="round"/>
+</svg>
