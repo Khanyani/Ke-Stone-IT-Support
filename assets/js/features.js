@@ -555,6 +555,11 @@
       panel.querySelector(".estimate-note").textContent =
         (URGENCY[urgency.value] || "We usually reply within 24 hours.") + " Final quotes are always confirmed before work starts.";
     }
+    /* Arriving from a service card (enquiry.html?service=backup) pre-selects that service */
+    try {
+      var wanted = new URLSearchParams(window.location.search).get("service");
+      if (wanted && ISSUES[wanted]) issue.value = wanted;
+    } catch (e) {}
     issue.addEventListener("change", update);
     urgency.addEventListener("change", update);
     update();
