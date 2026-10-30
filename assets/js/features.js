@@ -143,11 +143,13 @@
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
 
-    links.forEach(function (link, i) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        open(i);
-      });
+    gallery.addEventListener("click", function (e) {
+      var link = e.target.closest("a.gallery-item");
+      if (!link || !gallery.contains(link)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      links = visibleLinks();
+      open(Math.max(0, links.indexOf(link)));
     });
 
     box.querySelector(".lb-prev").addEventListener("click", function () {
