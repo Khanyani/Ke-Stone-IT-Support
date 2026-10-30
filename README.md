@@ -98,6 +98,11 @@ Part 1 consisted of a written Website Project Proposal covering:
 8. Budget
 9. References
 
+The Part 1 proposal document is included in this repository as
+`ST10489373__ICE_TASK_1_WEDE5020.docx`.
+
+*(Part 2 and Part 3 details are covered in this README and the website files below.)*
+
 ## Sitemap
 ```
 Homepage (index.html)
