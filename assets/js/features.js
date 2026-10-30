@@ -520,6 +520,12 @@
     network: { label: "Network setup", price: "From R700 per site setup" },
     security: { label: "Cybersecurity basics", price: "From R600 per assessment & setup" },
     remote: { label: "Remote support", price: "From R250 per 30-minute session" },
+    backup: { label: "Data backup & recovery", price: "From R550 per backup setup" },
+    printer: { label: "Printer & peripheral setup", price: "From R350 per device" },
+    email: { label: "Email & Microsoft 365 setup", price: "From R500 per setup, up to 5 users" },
+    software: { label: "Software installation & upgrades", price: "From R300 per device" },
+    hardware: { label: "Hardware upgrade / custom PC build", price: "From R600 labour, excluding parts" },
+    cctv: { label: "CCTV & smart home setup", price: "From R1200 per installation, up to 4 cameras" },
     maintenance: { label: "Maintenance plan", price: "From R450 per month (Home Essentials), R900 per month for up to 5 devices" },
     other: { label: "Other", price: "We'll quote after a free chat about the problem" },
   };
