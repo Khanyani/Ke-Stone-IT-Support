@@ -1860,3 +1860,38 @@ form[hidden] { display: none !important; }
   white-space: nowrap;
   border: 0;
 }
+
+/* Clickable service cards: the whole card is the link target */
+.card-clickable {
+  position: relative;
+  cursor: pointer;
+}
+.card-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lime);
+  text-decoration: none;
+}
+.card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.card-link:hover,
+.card-link:focus-visible {
+  text-decoration: underline;
+}
+.card-clickable:focus-within {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+.card-clickable:hover .card-link span {
+  display: inline-block;
+  transform: translateX(4px);
+  transition: transform 0.2s ease;
+}
