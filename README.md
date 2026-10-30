@@ -27,7 +27,7 @@ file structure, and the working HTML/CSS/JS website).
 - Growth in newsletter or mailing list sign-ups for maintenance-plan customers.
 
 ## Key Features and Functionality
-**Part 2**
+**Part 2 (original build)**
 - Responsive 5-page website: Home, About Us, Services, Enquiry, and Contact (extended in Part 3 with Repairs, Privacy, Terms and a 404 page, see below).
 - Sticky header navigation with a mobile hamburger menu, skip link and `aria-current` page highlighting.
 - Service cards with indicative pricing, live search + category filter, monthly/yearly pricing switch.
