@@ -87,6 +87,13 @@
     var links = qsa("a.gallery-item", gallery);
     if (!links.length) return;
 
+    /* Services page: only step through cards that the filter is currently showing */
+    function visibleLinks() {
+      return qsa("a.gallery-item", gallery).filter(function (l) {
+        return !l.closest(".is-filtered-out");
+      });
+    }
+
     var current = 0;
     var lastFocus = null;
     var touchX = null;
