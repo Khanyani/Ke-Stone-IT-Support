@@ -126,6 +126,7 @@ Ke-Stone-IT-Support/
 |-- index.html
 |-- 404.html
 |-- robots.txt
+|-- tools/build_search_index.py  (regenerates the search index)
 |-- sitemap.xml
 |-- README.md
 |-- pages/
