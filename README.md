@@ -130,6 +130,7 @@ Ke-Stone-IT-Support/
 |-- tools/build_search_index.py  (regenerates the search index)
 |-- sitemap.xml
 |-- README.md
+|-- CHANGELOG.md
 |-- pages/
 |    |-- about.html
 |    |-- services.html
