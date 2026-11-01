@@ -71,6 +71,58 @@ window.KESTONE_SEARCH = [
   "x": "Describe the problem and we'll recommend the right option — no obligation. Request Support"
  },
  {
+  "t": "PC & Laptop Repair",
+  "u": "pages/services.html#svc-repair",
+  "p": "Service",
+  "k": "service",
+  "key": "repair",
+  "img": "assets/images/services/pc-laptop-repair.svg",
+  "alt": "Laptop opened on a repair mat with a screwdriver and replacement SSD",
+  "d": "Diagnostics, virus and malware removal, operating system reinstalls, screen and keyboard replacements, SSD upgrades and data recovery attempts.",
+  "pr": "From R450",
+  "un": "per device, after diagnosis",
+  "x": "Diagnostics, virus and malware removal, operating system reinstalls, screen and keyboard replacements, SSD upgrades and data recovery attempts. From R450 450 per device, after diagnosis"
+ },
+ {
+  "t": "Network Setup",
+  "u": "pages/services.html#svc-network",
+  "p": "Service",
+  "k": "service",
+  "key": "network",
+  "img": "assets/images/services/network-setup.svg",
+  "alt": "Router and switch connected to laptops with Wi-Fi signal arcs",
+  "d": "Router and Wi-Fi configuration, mesh and range extension, cabling for small offices, printer sharing, guest networks and speed troubleshooting.",
+  "pr": "From R700",
+  "un": "per site setup",
+  "x": "Router and Wi-Fi configuration, mesh and range extension, cabling for small offices, printer sharing, guest networks and speed troubleshooting. From R700 700 per site setup"
+ },
+ {
+  "t": "Cybersecurity Basics",
+  "u": "pages/services.html#svc-security",
+  "p": "Service",
+  "k": "service",
+  "key": "security",
+  "img": "assets/images/services/cybersecurity-basics.svg",
+  "alt": "Shield with a padlock and a protected password field",
+  "d": "Antivirus rollout, password manager setup, two-factor authentication, automated backups and a short staff or family awareness walkthrough.",
+  "pr": "From R600",
+  "un": "per assessment & setup",
+  "x": "Antivirus rollout, password manager setup, two-factor authentication, automated backups and a short staff or family awareness walkthrough. From R600 600 per assessment & setup"
+ },
+ {
+  "t": "Remote Support",
+  "u": "pages/services.html#svc-remote",
+  "p": "Service",
+  "k": "service",
+  "key": "remote",
+  "img": "assets/images/services/remote-support.svg",
+  "alt": "Two screens linked by a dotted line with a cursor moving across",
+  "d": "Secure, permission-based remote sessions for software errors, email and printer problems, updates and quick configuration changes.",
+  "pr": "From R250",
+  "un": "per 30-minute session",
+  "x": "Secure, permission-based remote sessions for software errors, email and printer problems, updates and quick configuration changes. From R250 250 per 30-minute session"
+ },
+ {
   "t": "Ongoing Maintenance Plans",
   "u": "pages/services.html#svc-maintenance",
   "p": "Service",
