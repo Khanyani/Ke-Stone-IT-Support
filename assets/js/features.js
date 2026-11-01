@@ -957,7 +957,80 @@
         count.appendChild(document.createTextNode("."));
       }
 
-      hits.forEach(function (h) {
+      /* Services come first, each as a full card (picture, description, price, actions) */
+      var svcHits = hits.filter(function (h) { return h.e.k === "service"; });
+      var otherHits = hits.filter(function (h) { return h.e.k !== "service"; });
+
+      function groupHeading(text) {
+        var li = document.createElement("li");
+        li.className = "search-group";
+        li.textContent = text;
+        list.appendChild(li);
+      }
+
+      function el(tag, cls, text) {
+        var n = document.createElement(tag);
+        if (cls) n.className = cls;
+        if (text) n.textContent = text;
+        return n;
+      }
+
+      if (svcHits.length) groupHeading("Services (" + svcHits.length + ")");
+      svcHits.forEach(function (h) {
+        var e = h.e;
+        var li = el("li", "search-result search-service");
+
+        var pic = el("a", "search-pic");
+        pic.href = "services.html#svc-" + e.key;
+        pic.setAttribute("aria-label", "View " + e.t + " on the Services page");
+        var img = el("img");
+        img.src = "../" + e.img;
+        img.alt = e.alt || e.t;
+        img.width = 800;
+        img.height = 500;
+        img.loading = "lazy";
+        pic.appendChild(img);
+
+        var body = el("div", "search-body");
+        var head = el("div", "search-head");
+        head.appendChild(el("span", "search-badge badge-service", "Service"));
+        var title = el("a", "search-title");
+        title.href = "services.html#svc-" + e.key;
+        highlight(title, e.t, ts);
+        head.appendChild(title);
+        body.appendChild(head);
+
+        var desc = el("p", "search-desc");
+        highlight(desc, e.d || e.x, ts);
+        body.appendChild(desc);
+
+        var price = el("p", "search-price");
+        var strong = el("strong");
+        highlight(strong, e.pr || "", ts);
+        price.appendChild(strong);
+        if (e.un) {
+          var unit = el("span");
+          highlight(unit, " " + e.un, ts);
+          price.appendChild(unit);
+        }
+        body.appendChild(price);
+
+        var actions = el("div", "search-actions");
+        var req = el("a", "btn btn-accent btn-sm", "Request this service");
+        req.href = "enquiry.html?service=" + e.key;
+        var more = el("a", "btn btn-outline btn-sm", "View on Services page");
+        more.href = "services.html#svc-" + e.key;
+        actions.appendChild(req);
+        actions.appendChild(more);
+        body.appendChild(actions);
+
+        li.appendChild(pic);
+        li.appendChild(body);
+        list.appendChild(li);
+      });
+
+      if (otherHits.length) groupHeading(svcHits.length ? "Pages, FAQs and policies (" + otherHits.length + ")" : "Results (" + otherHits.length + ")");
+      otherHits.forEach(function (h) {
         var li = document.createElement("li");
         li.className = "search-result";
         var badge = document.createElement("span");
