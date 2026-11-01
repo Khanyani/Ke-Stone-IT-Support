@@ -172,8 +172,27 @@ def main():
                 "k": kind,
                 "x": trim(text),
             })
-        for sid, stitle, text in c.services:
-            entries.append({"t": stitle, "u": f"pages/services.html#{sid}", "p": "Service", "k": "service", "x": trim(text)})
+        # Full service details come from the Services page only (the Home cards are shorter)
+        for sid, stitle, text, svc in (c.services if rel == "pages/services.html" else []):
+            desc_ = clean(svc.get("desc", ""))
+            price_ = clean(svc.get("price", ""))
+            unit_ = clean(svc.get("unit", ""))
+            # Searchable text: description + price line; "R450" also indexed as "450"
+            full = clean(f"{desc_} {price_} {unit_}")
+            full = re.sub(r"R(\d+)", r"R\1 \1", full)
+            entries.append({
+                "t": stitle,
+                "u": f"pages/services.html#{sid}",
+                "p": "Service",
+                "k": "service",
+                "key": sid.replace("svc-", ""),
+                "img": svc.get("img", "").replace("../", ""),
+                "alt": svc.get("alt", ""),
+                "d": desc_,
+                "pr": price_,
+                "un": unit_,
+                "x": full,
+            })
         for q, a in c.faq:
             entries.append({"t": q, "u": rel + "#faq", "p": "FAQ", "k": "faq", "x": trim(a)})
     # Drop exact duplicates (same title + url)
