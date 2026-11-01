@@ -2056,3 +2056,63 @@ form[hidden] { display: none !important; }
   outline: 2px solid var(--lime);
   outline-offset: 3px;
 }
+
+/* Search: service results shown as full cards */
+.search-group {
+  margin-top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+.search-service {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) 1fr;
+  gap: 1.2rem;
+  align-items: start;
+  border-left: 3px solid var(--lime);
+}
+.search-pic {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.search-pic img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+.search-service .search-desc {
+  color: var(--text);
+  font-size: 1rem;
+}
+.search-price {
+  margin: 0.6rem 0 0;
+  color: var(--lime);
+  font-family: var(--mono);
+}
+.search-price span {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.search-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+@media (max-width: 640px) {
+  .search-service {
+    grid-template-columns: 1fr;
+  }
+}
+
+.site-search {
+  scroll-margin-top: 90px;
+}
