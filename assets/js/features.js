@@ -864,6 +864,12 @@
     }
 
     function wordHit(haystack, term) {
+      /* "services" should also find "service": try the term without a trailing s */
+      if (term.length > 3 && term.charAt(term.length - 1) === "s" && wordHitOne(haystack, term.slice(0, -1))) return true;
+      return wordHitOne(haystack, term);
+    }
+
+    function wordHitOne(haystack, term) {
       /* prefix match on word starts, so "print" finds "printer" */
       return new RegExp("(^|[^a-z0-9])" + term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).test(haystack);
     }
