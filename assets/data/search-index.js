@@ -153,7 +153,13 @@ window.KESTONE_SEARCH = [
   "u": "pages/services.html#svc-printer",
   "p": "Service",
   "k": "service",
-  "x": "Printer, scanner and router-connected device setup: drivers, wireless printing, shared printers and fixing paper jams, offline errors and slow printing. From R350 per device"
+  "key": "printer",
+  "img": "assets/images/services/printer-peripheral-setup.svg",
+  "alt": "Printer connected wirelessly to a laptop",
+  "d": "Printer, scanner and router-connected device setup: drivers, wireless printing, shared printers and fixing paper jams, offline errors and slow printing.",
+  "pr": "From R350",
+  "un": "per device",
+  "x": "Printer, scanner and router-connected device setup: drivers, wireless printing, shared printers and fixing paper jams, offline errors and slow printing. From R350 350 per device"
  },
  {
   "t": "Email & Microsoft 365 Setup",
