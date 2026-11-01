@@ -1073,6 +1073,12 @@
         sync(true);
       }, 120);
     });
+    function showResults() {
+      /* Bring the results into view, because the page heading is tall */
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      form.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       render();
