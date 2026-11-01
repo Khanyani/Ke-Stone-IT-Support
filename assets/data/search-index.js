@@ -166,7 +166,13 @@ window.KESTONE_SEARCH = [
   "u": "pages/services.html#svc-email",
   "p": "Service",
   "k": "service",
-  "x": "Business email and Microsoft 365 or Google Workspace setup on every device, with migration of existing mail, shared calendars and spam protection. From R500 per setup, up to 5 users"
+  "key": "email",
+  "img": "assets/images/services/email-microsoft-365-setup.svg",
+  "alt": "Envelope with an at-sign over three devices",
+  "d": "Business email and Microsoft 365 or Google Workspace setup on every device, with migration of existing mail, shared calendars and spam protection.",
+  "pr": "From R500",
+  "un": "per setup, up to 5 users",
+  "x": "Business email and Microsoft 365 or Google Workspace setup on every device, with migration of existing mail, shared calendars and spam protection. From R500 500 per setup, up to 5 users"
  },
  {
   "t": "Software Installation & Upgrades",
