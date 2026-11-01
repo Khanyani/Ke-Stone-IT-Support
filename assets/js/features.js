@@ -1083,6 +1083,7 @@
       e.preventDefault();
       render();
       sync(false);
+      showResults();
     });
     filters.forEach(function (c) {
       c.addEventListener("click", function () {
@@ -1098,7 +1099,7 @@
         input.value = c.getAttribute("data-q");
         render();
         sync(false);
-        input.focus();
+        showResults();
       });
     });
 
@@ -1107,6 +1108,7 @@
       if (initial) input.value = initial.slice(0, 80);
     } catch (e) {}
     render();
+    if (input.value) setTimeout(showResults, 150);
   }
 
   /* ---------- Boot ---------- */
