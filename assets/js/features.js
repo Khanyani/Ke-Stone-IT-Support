@@ -916,7 +916,7 @@
     }
 
     function snippet(text, ts) {
-      if (text.length <= 170) return text;
+      if (text.length <= 260) return text;
       var low = text.toLowerCase();
       var pos = -1;
       for (var i = 0; i < ts.length && pos < 0; i++) pos = low.indexOf(ts[i]);
