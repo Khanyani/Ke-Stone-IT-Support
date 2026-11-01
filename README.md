@@ -205,6 +205,7 @@ python3 tools/build_search_index.py
 | v5.4 2026-10-30 | Services | Service cards were not interactive | Made each service card a link to the enquiry form (`?service=` parameter) and pre-selected the service there | Fewer clicks from interest to request |
 | v5.5 2026-10-30 | Services | Services had no pictures | Added a picture to every service card (SVG illustrations in `assets/images/services/`) that opens in the lightbox; the lightbox now follows the active filter | Visual, easier to scan services |
 | v5.6 2026-10-30 | Navigation | No way to search the site | Added `search.html`, a generated search index, a build script, a menu icon, footer link and 404 search box; service cards get `id`s so results link to the exact card | Visitors find services, prices and policies quickly |
+| v5.7 2026-10-31 | Search | Service results were short text snippets, and prices were missing for the first five services because the Home page cards (which have no price) were indexed instead of the Services page | Service results are now full cards with picture, description, price and actions; the index takes service details from `services.html` only; added plural and price matching; the page scrolls to results | Searching for a service shows everything about it |
 
 ## References
 Baymard Institute (2025) *E-commerce checkout usability research.* Available at:
