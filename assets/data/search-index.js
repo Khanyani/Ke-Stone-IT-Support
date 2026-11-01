@@ -205,7 +205,13 @@ window.KESTONE_SEARCH = [
   "u": "pages/services.html#svc-cctv",
   "p": "Service",
   "k": "service",
-  "x": "Camera systems with remote phone viewing, smart doorbells, smart plugs and Wi-Fi coverage planning for homes and small shops. From R1200 per installation, up to 4 cameras"
+  "key": "cctv",
+  "img": "assets/images/services/cctv-smart-home-setup.svg",
+  "alt": "Security camera on a house with a smart doorbell",
+  "d": "Camera systems with remote phone viewing, smart doorbells, smart plugs and Wi-Fi coverage planning for homes and small shops.",
+  "pr": "From R1200",
+  "un": "per installation, up to 4 cameras",
+  "x": "Camera systems with remote phone viewing, smart doorbells, smart plugs and Wi-Fi coverage planning for homes and small shops. From R1200 1200 per installation, up to 4 cameras"
  },
  {
   "t": "How much does a callout cost?",
