@@ -50,6 +50,8 @@ class Collector(HTMLParser):
         self.cur = None
         self.services = []       # [id, title, text]
         self.cur_service = None
+        self.svc = {}
+        self.p_kind = ""
         self.service_depth = 0
         self.faq = []            # [question, answer]
         self.in_trigger = False
