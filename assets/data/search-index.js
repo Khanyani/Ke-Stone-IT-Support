@@ -192,7 +192,13 @@ window.KESTONE_SEARCH = [
   "u": "pages/services.html#svc-hardware",
   "p": "Service",
   "k": "service",
-  "x": "More memory, faster SSDs, new graphics cards or a complete custom-built PC for work or gaming. Parts are quoted separately. From R600 labour, excluding parts"
+  "key": "hardware",
+  "img": "assets/images/services/hardware-upgrades-custom-pc-builds.svg",
+  "alt": "Open PC case with graphics card, memory and processor fan",
+  "d": "More memory, faster SSDs, new graphics cards or a complete custom-built PC for work or gaming. Parts are quoted separately.",
+  "pr": "From R600",
+  "un": "labour, excluding parts",
+  "x": "More memory, faster SSDs, new graphics cards or a complete custom-built PC for work or gaming. Parts are quoted separately. From R600 600 labour, excluding parts"
  },
  {
   "t": "CCTV & Smart Home Setup",
