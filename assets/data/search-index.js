@@ -179,7 +179,13 @@ window.KESTONE_SEARCH = [
   "u": "pages/services.html#svc-software",
   "p": "Service",
   "k": "service",
-  "x": "Windows and macOS upgrades, Office and business software installation, licensing help and clean-ups so your device runs like new. From R300 per device"
+  "key": "software",
+  "img": "assets/images/services/software-installation-upgrades.svg",
+  "alt": "Application window with a download arrow and progress bar",
+  "d": "Windows and macOS upgrades, Office and business software installation, licensing help and clean-ups so your device runs like new.",
+  "pr": "From R300",
+  "un": "per device",
+  "x": "Windows and macOS upgrades, Office and business software installation, licensing help and clean-ups so your device runs like new. From R300 300 per device"
  },
  {
   "t": "Hardware Upgrades & Custom PC Builds",
