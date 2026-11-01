@@ -135,6 +135,8 @@ class Collector(HTMLParser):
             self.a += data
         if self.cur_service is not None and self.heading is None:
             self.cur_service[2] += " " + data
+            if self.p_kind:
+                self.svc[self.p_kind] = self.svc.get(self.p_kind, "") + data
         if self.cur is not None and self.heading is None:
             self.cur[2] += " " + data
 
