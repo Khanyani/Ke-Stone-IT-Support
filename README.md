@@ -210,6 +210,8 @@ The full, version-by-version history is in [CHANGELOG.md](CHANGELOG.md). The tab
 | v5.5 2026-10-30 | Services | Services had no pictures | Added a picture to every service card (SVG illustrations in `assets/images/services/`) that opens in the lightbox; the lightbox now follows the active filter | Visual, easier to scan services |
 | v5.6 2026-10-30 | Navigation | No way to search the site | Added `search.html`, a generated search index, a build script, a menu icon, footer link and 404 search box; service cards get `id`s so results link to the exact card | Visitors find services, prices and policies quickly |
 | v5.7 2026-10-31 | Search | Service results were short text snippets, and prices were missing for the first five services because the Home page cards (which have no price) were indexed instead of the Services page | Service results are now full cards with picture, description, price and actions; the index takes service details from `services.html` only; added plural and price matching; the page scrolls to results | Searching for a service shows everything about it |
+| v5.8 2026-11-01 | Docs | Changes were only listed in the README table | Added `CHANGELOG.md` with every version grouped as Added, Changed and Fixed, and linked it from the README | Easy for the lecturer to trace every change |
+| v5.9 2026-11-01 | Language | The site was English only | Added an English / isiXhosa switch in the menu (`assets/js/i18n.js`, dictionary in `assets/js/lang-xh.js`), remembered between pages, covering dynamic content; legal pages stay English with a notice | Makes the site usable for isiXhosa-speaking customers |
 
 ## References
 Baymard Institute (2025) *E-commerce checkout usability research.* Available at:
