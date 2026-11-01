@@ -2116,3 +2116,31 @@ form[hidden] { display: none !important; }
 .site-search {
   scroll-margin-top: 90px;
 }
+
+/* ---------- Language switch ---------- */
+.lang-switch {
+  background: transparent;
+  color: var(--lime);
+  border: 1px solid var(--lime);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  line-height: 1.2;
+}
+.lang-switch:hover,
+.lang-switch:focus-visible {
+  background: var(--lime);
+  color: var(--ink);
+}
+.lang-notice {
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid var(--cyan);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin: 0 0 18px;
+  font-size: 0.9rem;
+}
