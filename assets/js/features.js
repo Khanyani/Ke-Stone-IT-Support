@@ -921,8 +921,8 @@
       var pos = -1;
       for (var i = 0; i < ts.length && pos < 0; i++) pos = low.indexOf(ts[i]);
       var start = Math.max(0, pos - 50);
-      var out = text.slice(start, start + 170);
-      return (start > 0 ? "… " : "") + out + (start + 170 < text.length ? " …" : "");
+      var out = text.slice(start, start + 260);
+      return (start > 0 ? "… " : "") + out + (start + 260 < text.length ? " …" : "");
     }
 
     function render() {
