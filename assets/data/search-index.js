@@ -127,7 +127,13 @@ window.KESTONE_SEARCH = [
   "u": "pages/services.html#svc-maintenance",
   "p": "Service",
   "k": "service",
-  "x": "Monthly check-ups, update management, backup monitoring and priority response — so small problems get caught before they stop your work. From R900 per month, up to 5 devices"
+  "key": "maintenance",
+  "img": "assets/images/services/ongoing-maintenance-plans.svg",
+  "alt": "Calendar with ticked monthly check-ups and a wrench",
+  "d": "Monthly check-ups, update management, backup monitoring and priority response — so small problems get caught before they stop your work.",
+  "pr": "From R900",
+  "un": "per month, up to 5 devices",
+  "x": "Monthly check-ups, update management, backup monitoring and priority response — so small problems get caught before they stop your work. From R900 900 per month, up to 5 devices"
  },
  {
   "t": "Data Backup & Recovery",
