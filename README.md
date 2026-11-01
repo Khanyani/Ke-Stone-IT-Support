@@ -182,6 +182,8 @@ python3 tools/build_search_index.py
 | 404 | Opened `404.html` and followed its links | Styles, base path and links resolve |
 
 ## Changelog
+The full, version-by-version history is in [CHANGELOG.md](CHANGELOG.md). The table below summarises each change as issue, change and result.
+
 | Date / Version | Area | Issue / Feedback | Change Made | Reason / Result |
 |---|---|---|---|---|
 | 2026-08-05 | Part 1 | Proposal had no reference list | Added Harvard-referenced Reference List to the written proposal | Sources are traceable |
