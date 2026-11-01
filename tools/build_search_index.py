@@ -105,7 +105,7 @@ class Collector(HTMLParser):
             if tag == "article" and self.cur_service and len(self.stack) == self.service_depth:
                 s = self.cur_service
                 s[2] = re.sub(r"^View\s+|\s*Request this service\s*→?$", "", clean(s[2]))
-                self.services.append(s)
+                self.services.append(s + [dict(self.svc)])
                 self.cur_service = None
             self.stack.pop()
         if tag in HEADINGS and self.heading is not None:
@@ -116,6 +116,8 @@ class Collector(HTMLParser):
                 self.cur = [title, self.heading_id, ""]
                 self.sections.append(self.cur)
             self.heading = None
+        if tag == "p" and self.cur_service is not None:
+            self.p_kind = ""
         if self.in_trigger and tag == "button":
             self.in_trigger = False
         if self.in_panel and tag == "div" and self.a.strip():
