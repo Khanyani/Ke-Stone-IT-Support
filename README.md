@@ -46,6 +46,7 @@ file structure, and the working HTML/CSS/JS website).
 | Live cost/response estimate that changes with the selected issue and urgency | `enquiry.html` | `features.js` |
 | Enquiry form: new fields (preferred date, service mode radios, consent checkbox), AJAX (`fetch`) submit and in-page response with reference number | `enquiry.html` | `script.js`, `features.js` |
 | Contact form: message type, subject, optional phone; validated data is compiled into an email (`mailto:`) to `hello@kestone-it.co.za` | `contact.html` | `features.js` |
+| Language switch (English / isiXhosa) in the menu, saved between pages, covers dynamic content | All pages | `i18n.js`, `lang-xh.js`, `style.css` |
 | SEO: unique titles/descriptions, Open Graph tags, canonical URLs, JSON-LD (`ComputerRepair` and `FAQPage`), `sitemap.xml`, `robots.txt`, favicon, descriptive image names and alt text | all pages | HTML head, root files |
 
 **Additional pages and features (post-Part 3 extension)**
