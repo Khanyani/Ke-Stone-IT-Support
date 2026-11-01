@@ -73,7 +73,17 @@ class Collector(HTMLParser):
         cls = a.get("class", "")
         if tag == "article" and a.get("id", "").startswith("svc-"):
             self.cur_service = [a["id"], "", ""]
+            self.svc = {}
+            self.p_kind = ""
             self.service_depth = len(self.stack)
+        if self.cur_service is not None:
+            if tag == "img":
+                self.svc["img"] = a.get("src", "")
+                self.svc["alt"] = a.get("alt", "")
+            elif tag == "p":
+                self.p_kind = "price" if "price" in cls else ("" if self.svc.get("desc") else "desc")
+            elif tag == "span" and self.p_kind == "price":
+                self.p_kind = "unit"
         if tag in HEADINGS:
             self.heading = ""
             self.heading_id = a.get("id", "")
