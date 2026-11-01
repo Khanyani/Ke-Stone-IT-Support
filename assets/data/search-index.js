@@ -36,34 +36,6 @@ window.KESTONE_SEARCH = [
   "x": "Send us a few details about the problem and how urgent it is. We'll come back to you with next steps and an honest estimate. Request Support"
  },
  {
-  "t": "PC & Laptop Repair",
-  "u": "pages/services.html#svc-repair",
-  "p": "Service",
-  "k": "service",
-  "x": "Slow machines, crashes, broken screens, failed drives and virus clean-ups — hardware and software, both sorted."
- },
- {
-  "t": "Network Setup",
-  "u": "pages/services.html#svc-network",
-  "p": "Service",
-  "k": "service",
-  "x": "Reliable Wi-Fi and wired networks, router configuration, range extenders, printers and shared folders."
- },
- {
-  "t": "Cybersecurity Basics",
-  "u": "pages/services.html#svc-security",
-  "p": "Service",
-  "k": "service",
-  "x": "Antivirus, password managers, backups, safe browsing habits and practical protection against phishing."
- },
- {
-  "t": "Remote Support",
-  "u": "pages/services.html#svc-remote",
-  "p": "Service",
-  "k": "service",
-  "x": "Many issues are solved without a visit — we connect securely, with your permission, and fix it while you watch."
- },
- {
   "t": "IT Support Services & Pricing",
   "u": "pages/services.html",
   "p": "Services",
