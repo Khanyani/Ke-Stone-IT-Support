@@ -140,7 +140,13 @@ window.KESTONE_SEARCH = [
   "u": "pages/services.html#svc-backup",
   "p": "Service",
   "k": "service",
-  "x": "Automated cloud and external-drive backups set up and tested, plus recovery attempts for deleted files and failing drives. From R550 per backup setup"
+  "key": "backup",
+  "img": "assets/images/services/data-backup-recovery.svg",
+  "alt": "External drive and cloud with a tick showing a safe backup copy",
+  "d": "Automated cloud and external-drive backups set up and tested, plus recovery attempts for deleted files and failing drives.",
+  "pr": "From R550",
+  "un": "per backup setup",
+  "x": "Automated cloud and external-drive backups set up and tested, plus recovery attempts for deleted files and failing drives. From R550 550 per backup setup"
  },
  {
   "t": "Printer & Peripheral Setup",
